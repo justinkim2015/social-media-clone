@@ -80,7 +80,6 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
+production:
   <<: *default
-  database: odin_facebook_production
-  username: odin_facebook
-  password: <%= ENV["ODIN_FACEBOOK_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
