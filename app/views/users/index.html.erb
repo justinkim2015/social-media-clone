@@ -1,0 +1,8 @@
+<div class="box">
+  <h1 class="title">Add Friend:</h1>
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= user.email %></li>
+    <% end %>
+  </ul>
+</div>
