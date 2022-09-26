@@ -11,9 +11,17 @@ class FriendRequestsController < ApplicationController
     end
   end
 
+  def destroy
+    @friend_requests = FriendRequest.find_requests(params[:requester_id], params[:reciever_id])
+    @friend_requests[0].destroy
+    flash.notice = "Friend invite revoked!"
+
+    redirect_to users_path, status: :see_other
+  end
+
   private
 
-  def friend_request_params 
-    params.require(:friend_request).permit(:reciever_id)
+  def friend_request_params
+    params.require(:friend_request).permit(:reciever_id, :requester_id)
   end
 end
