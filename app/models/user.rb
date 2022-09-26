@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
+
+  has_many :recieved_friend_requests, foreign_key: "reciever_id", class_name: "FriendRequest"
+  has_many :sent_friend_requests, foreign_key: "requester_id", class_name: "FriendRequest"
 end
