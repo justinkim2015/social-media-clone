@@ -1,8 +1,15 @@
+<%= render "shared/flash" %>
+
 <div class="box">
   <h1 class="title">Add Friend:</h1>
   <ul>
     <% @users.each do |user| %>
       <li><%= user.email %></li>
+
+      <%= form_with model: @friend_request do |f| %>
+        <%= f.hidden_field :reciever_id, value: user.id %>
+        <%= f.submit "ADD" %>
+      <% end %>
     <% end %>
   </ul>
 </div>
