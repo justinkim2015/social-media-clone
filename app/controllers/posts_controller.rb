@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @post = Post.new
+    @notifs = current_user.recieved_friend_requests
   end
 
   def new

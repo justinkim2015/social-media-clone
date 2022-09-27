@@ -24,15 +24,14 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Notif 1
-          </a>
-          <a class="navbar-item">
-            Notif 2
-          </a>
-          <a class="navbar-item">
-            Notif 3
-          </a>
+
+          <% if defined?(notifs) %>
+            <% notifs.each do |notif| %>
+              <a class="navbar-item">
+                <p>Friend request from: <%= notif.requester.email %></p>
+              </a>
+            <% end %>
+          <% end %>
         </div>
       </div>
 
