@@ -1,23 +1,23 @@
+<%= render "shared/navbar" %>
 <%= render "shared/flash" %>
 
 <div class="box">
   <h1 class="title">Add Friend:</h1>
   <ul>
     <% @except_current_user.each do |user| %>
-      <div class="container is-flex m-3">
-        <%= user.email %>
-        <% if FriendRequest.find_requests(current_user.id, user.id).empty? %>
-          <%= form_with model: @friend_request do |f| %>
-            <%= f.hidden_field :reciever_id, value: user.id %>
-            <%= f.submit "ADD" %>
-          <% end %>
-        <% else %>
-          <%= button_to "Delete request",
-                        friend_request_path(0),
-                        method: :delete,
-                        params: {requester_id: current_user.id, reciever_id: user.id} %>
+      <%= user.email %>
+
+      <% if FriendRequest.find_requests(current_user.id, user.id).empty? %>
+        <%= form_with model: @friend_request do |f| %>
+          <%= f.hidden_field :reciever_id, value: user.id %>
+          <%= f.submit "ADD" %>
         <% end %>
-      </div>
+      <% else %>
+        <%= button_to "Delete request",
+                      friend_request_path(0), 
+                      method: :delete, 
+                      params: {requester_id: current_user.id, reciever_id: user.id} %>
+      <% end %>
     <% end %>
   </ul>
 </div>

@@ -1,0 +1,42 @@
+<div class="navbar">
+  <div class="navbar-brand">
+    <div class="navbar-item">
+      <h1 class="title">Odinbook</h1>
+    </div>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-link"><%= link_to "Home", root_path %></div>
+      <div class="navbar-link"><%= link_to "Add Friends", users_path %></div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <p>Notifications</p>
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Notif 1
+          </a>
+          <a class="navbar-item">
+            Notif 2
+          </a>
+          <a class="navbar-item">
+            Notif 3
+          </a>
+        </div>
+      </div>
+
+      <div class="navbar-item"><%= button_to "Signout", destroy_user_session_path, method: :delete %></div>
+    </div>
+  </div>
+</div>

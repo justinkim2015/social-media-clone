@@ -1,5 +1,6 @@
-<%= button_to "Signout", destroy_user_session_path, method: :delete %>
-<%= link_to "All users", users_path %>
+<%= render "shared/navbar" %>
+<%= render "shared/flash" %>
+
 
 <%= form_with model: @post, method: "post" do |f| %>
   <%= f.text_field :body %>
