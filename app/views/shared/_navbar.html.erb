@@ -34,7 +34,7 @@
                 <%= button_to "Yes",
                               friendships_path, 
                               method: :post, 
-                              params: {requester_id: notif.requester.id} %>
+                              params: { friendship: {friend_a_id: current_user.id, friend_b_id: notif.requester.id} } %>
                 
                 <%= button_to "No",
                               friend_request_path(0), 

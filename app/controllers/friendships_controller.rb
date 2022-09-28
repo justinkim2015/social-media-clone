@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def create
-    @friendship = Friendship.new(friend_a_id: current_user.id, friend_b_id: params[:requester_id])
+    @friendship = Friendship.new(friendship_params)
 
     if @friendship.save
       flash.notice = "You are now friends!"
@@ -9,5 +9,11 @@ class FriendshipsController < ApplicationController
       flash.alert = "Something went wrong, try again."
       redirect_back_or_to root_path, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def friendship_params
+    params.require(:friendship).permit(:friend_a_id, :friend_b_id)
   end
 end
