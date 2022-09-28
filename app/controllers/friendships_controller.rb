@@ -3,6 +3,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new(friendship_params)
 
     if @friendship.save
+      FriendRequestManager.new.delete(friendship_params)
       flash.notice = "You are now friends!"
       redirect_back_or_to root_path
     else

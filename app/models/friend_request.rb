@@ -7,10 +7,6 @@ class FriendRequest < ApplicationRecord
   end
 
   def self.find_request(req_id, rec_id)
-    FriendRequest.find(find_id(req_id, rec_id))
-  end
-
-  def self.find_id(req_id, rec_id)
-    FriendRequest.where(reciever_id: rec_id).where(requester_id: req_id)[0].id
+    FriendRequest.find_by(reciever_id: rec_id, requester_id: req_id)
   end
 end
