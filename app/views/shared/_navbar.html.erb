@@ -14,6 +14,7 @@
   <div class="navbar-menu">
     <div class="navbar-start">
       <div class="navbar-link"><%= link_to "Home", root_path %></div>
+      <div class="navbar-link"><%= link_to "Profile", user_path(current_user.id) %></div>
       <div class="navbar-link"><%= link_to "Add Friends", users_path %></div>
     </div>
 
@@ -28,7 +29,18 @@
           <% if defined?(notifs) %>
             <% notifs.each do |notif| %>
               <a class="navbar-item">
-                <p>Friend request from: <%= notif.requester.email %></p>
+                <p><%= notif.requester.email %></p>
+
+                <%= button_to "Yes",
+                              friendships_path, 
+                              method: :post, 
+                              params: {requester_id: notif.requester.id} %>
+                
+                <%= button_to "No",
+                              friend_request_path(0), 
+                              method: :delete, 
+                              params: {requester_id: notif.requester.id , reciever_id: current_user.id} %>
+
               </a>
             <% end %>
           <% end %>

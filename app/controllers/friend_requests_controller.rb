@@ -3,11 +3,11 @@ class FriendRequestsController < ApplicationController
     @friend_request = current_user.sent_friend_requests.build(friend_request_params)
 
     if @friend_request.save
-      redirect_to users_path
       flash.notice = "Friend request sent!"
+      redirect_back_or_to root_path
     else
-      redirect_to users_path
       flash.alert = "Error!"
+      redirect_back_or_to root_path
     end
   end
 
@@ -16,7 +16,7 @@ class FriendRequestsController < ApplicationController
     @friend_requests[0].destroy
     flash.notice = "Friend invite revoked!"
 
-    redirect_to users_path, status: :see_other
+    redirect_back_or_to root_path, status: :see_other
   end
 
   private
