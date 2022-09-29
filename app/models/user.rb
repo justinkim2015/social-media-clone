@@ -20,7 +20,8 @@ class User < ApplicationRecord
   # https://medium.com/@elizabethprendergast/using-custom-relation-queries-to-establish-friends-and-friendships-in-rails-and-activerecord-6c6e5825433a
 
   def self.filter_users(id)
-    User.all - [self] - User.find(id).friends
+    current_user = User.find(id)
+    User.all - [current_user] - current_user.friends
   end
 
   def has_request_from_current_user?(req_user)
