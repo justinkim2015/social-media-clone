@@ -19,16 +19,12 @@ class User < ApplicationRecord
   # has_many :friends, through: :friendships
   # https://medium.com/@elizabethprendergast/using-custom-relation-queries-to-establish-friends-and-friendships-in-rails-and-activerecord-6c6e5825433a
 
-  def self.not_self(id)
-    User.where.not(id: id)
+  def self.filter_users(id)
+    User.all - [self] - User.find(id).friends
   end
 
   def has_request_from_current_user?(req_user)
     true unless FriendRequest.find_by(requester_id: req_user, reciever_id: id).nil?
-  end
-
-  def is_friends_with?(user_id)
-    friends.include?(User.find(user_id))
   end
 
   def friends

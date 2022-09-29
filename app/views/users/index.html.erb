@@ -5,21 +5,19 @@
   <h1 class="title">Add Friend:</h1>
   <ul>
     <% @filtered_users.each do |user| %>  
-      <% unless user.is_friends_with?(current_user.id) %>
-        <%= link_to user.email, user_path(user.id) %>
+      <%= link_to user.email, user_path(user.id) %>
 
-        <% unless user.has_request_from_current_user?(current_user.id) %>
-          <%= button_to "Add",
-              friend_requests_path, 
-              method: :post, 
-              params: { friend_request: {requester_id: current_user.id, reciever_id: user.id} } %>
+      <% unless user.has_request_from_current_user?(current_user.id) %>
+        <%= button_to "Add",
+            friend_requests_path, 
+            method: :post, 
+            params: { friend_request: {requester_id: current_user.id, reciever_id: user.id} } %>
 
-        <% else %>
-          <%= button_to "Delete request",
-                        friend_request_path(0), 
-                        method: :delete, 
-                        params: {requester_id: current_user.id, reciever_id: user.id} %>
-        <% end %>
+      <% else %>
+        <%= button_to "Delete request",
+                      friend_request_path(0), 
+                      method: :delete, 
+                      params: {requester_id: current_user.id, reciever_id: user.id} %>
       <% end %>
     <% end %>
   </ul>
@@ -27,4 +25,3 @@
 
 <%= link_to "home", root_path %>
 
-<%# If the friend request exists with the reciver_id and requester_id then it shows a delete button %>

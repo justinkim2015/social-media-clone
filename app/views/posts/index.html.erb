@@ -9,6 +9,12 @@
 
 <ul>
   <% @posts.each do |post| %>
-    <li><%= post.body %></li>
+    <div class="box">
+      <%= link_to post.user.email, user_path(post.user.id) %>
+      <br>
+      <%= post.body %>
+      <br>
+      <%= post.pretty_time %>
+    </div>
   <% end %>
 </ul>
