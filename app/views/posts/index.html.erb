@@ -16,16 +16,16 @@
       <br>
       <%= post.pretty_time %>
       <br>
-      <%= button_to "Like", 
+
+      <%= button_to post.display_likes, 
                   likes_path,
                   method: :post,
                   params: { like: {user_id: current_user.id, post_id: post.id} } %>
 
-      <%= post.likes.count %> Likes
-      <br>
-      <% post.users_who_like.each do |user| %>
-        <%= user.name %>
-      <% end %>
+      <%= button_to "Unlike", 
+                  like_path(0),
+                  method: :delete,
+                  params: { like: {user_id: current_user.id, post_id: post.id} } %>
     </div>
   <% end %>
 </ul>

@@ -3,12 +3,12 @@ class FriendRequestsController < ApplicationController
     @friend_request = current_user.sent_friend_requests.build(friend_request_params)
 
     if @friend_request.save
-      flash.notice = "Friend request sent!"
-      redirect_back_or_to root_path
+      flash.notice = 'Friend request sent!'
     else
-      flash.alert = "Error!"
-      redirect_back_or_to root_path
+      flash.alert = 'Error!'
     end
+    
+    redirect_back_or_to root_path
   end
 
   # Right now I'm finding the relation with ALL the requests by querying the requestor and recievers IDs.  What I need to do is find the ID for the 
@@ -16,7 +16,7 @@ class FriendRequestsController < ApplicationController
   def destroy
     @friend_request = FriendRequest.find_request(params[:requester_id], params[:reciever_id])
     @friend_request.destroy
-    flash.notice = "Friend invite revoked!"
+    flash.notice = 'Friend invite revoked!'
 
     redirect_back_or_to root_path, status: :see_other
   end
