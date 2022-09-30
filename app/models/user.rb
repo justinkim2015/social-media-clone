@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :friendships_as_b, foreign_key: :friend_b_id, class_name: :Friendship
   has_many :friends_as_b, through: :friendships_as_b, source: :friend_a
 
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
+
   # has_many :friendships, ->(user) { where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id) }
   # has_many :friends, through: :friendships
   # https://medium.com/@elizabethprendergast/using-custom-relation-queries-to-establish-friends-and-friendships-in-rails-and-activerecord-6c6e5825433a
