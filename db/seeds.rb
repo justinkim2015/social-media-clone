@@ -1,16 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
-User.create!(email: "foo@bar", password: 'foobar', password_confirmation: "foobar")
-User.create!(email: "bar@foo", password: 'foobar', password_confirmation: "foobar")
-User.create!(email: "foo@foo", password: 'foobar', password_confirmation: "foobar")
-User.create!(email: "bar@bar", password: 'foobar', password_confirmation: "foobar")
-User.create!(email: "fooo@bar", password: 'foobar', password_confirmation: "foobar")
-User.create!(email: "foo@baar", password: 'foobar', password_confirmation: "foobar")
-User.create!(email: "fooo@fooo", password: 'foobar', password_confirmation: "foobar")
-User.create!(email: "baar@baar", password: 'foobar', password_confirmation: "foobar")
+User.create!(first_name: 'justin', last_name: 'kim', email: 'foo@bar', password: 'foobar', password_confirmation: 'foobar')
+User.create!(first_name: 'Brandon', last_name: 'Lee', email: 'bar@foo', password: 'foobar', password_confirmation: 'foobar')
+User.create!(first_name: 'Jess', last_name: 'Best', email: 'foo@foo', password: 'foobar', password_confirmation: 'foobar')
+User.create!(first_name: 'Yuki', last_name: 'Kato', email: 'bar@bar', password: 'foobar', password_confirmation: 'foobar')
+User.create!(first_name: 'Satoshi', last_name: 'Sato',email: 'fooo@bar', password: 'foobar', password_confirmation: 'foobar')
+User.create!(first_name: 'Bill', last_name: 'McGill', email: 'foo@baar', password: 'foobar', password_confirmation: 'foobar')
+User.create!(first_name: 'Chad', last_name: 'Strong', email: 'fooo@fooo', password: 'foobar', password_confirmation: 'foobar')
+User.create!(first_name: 'Jay', last_name: 'Q', email: 'baar@baar', password: 'foobar', password_confirmation: 'foobar')
