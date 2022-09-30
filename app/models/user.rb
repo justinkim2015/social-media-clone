@@ -31,4 +31,8 @@ class User < ApplicationRecord
   def friends
     friends_as_a + friends_as_b
   end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end
