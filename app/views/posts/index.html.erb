@@ -29,8 +29,21 @@
                     method: :delete,
                     params: { like: {user_id: current_user.id, post_id: post.id} } %>
       <% end %>
-      
 
+      <%= link_to "Comment", new_comment_path(post_id: post.id) %>
+
+      <% post.comments.each do |comment| %>
+        <div class="box">
+          <%= link_to comment.user.name, user_path(comment.user.id) %>
+          <br>
+          <%= comment.body %>
+
+          <%= button_to "Delete", 
+                      comment_path(0),
+                      method: :delete,
+                      params: { comment: {user_id: current_user.id, post_id: post.id} } %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </ul>

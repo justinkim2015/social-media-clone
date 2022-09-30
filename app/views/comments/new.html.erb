@@ -1,0 +1,14 @@
+<%= render 'shared/navbar' %>
+<%= render 'shared/flash' %>
+
+<div class="container box">
+  <%= form_with model: @comment do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    
+    <%= f.label :body, "Comment:" %>
+    <%= f.text_area :body %>
+
+    <%= f.submit %>
+  <% end %>
+</div>
