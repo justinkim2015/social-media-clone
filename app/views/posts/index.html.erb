@@ -15,6 +15,17 @@
       <%= post.body %>
       <br>
       <%= post.pretty_time %>
+      <br>
+      <%= button_to "Like", 
+                  likes_path,
+                  method: :post,
+                  params: { like: {user_id: current_user.id, post_id: post.id} } %>
+
+      <%= post.likes.count %> Likes
+      <br>
+      <% post.users_who_like.each do |user| %>
+        <%= user.name %>
+      <% end %>
     </div>
   <% end %>
 </ul>

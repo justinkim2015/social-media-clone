@@ -5,7 +5,7 @@
   <h1 class="title">Add Friend:</h1>
   <ul>
     <% @filtered_users.each do |user| %>  
-      <%= link_to user.email, user_path(user.id) %>
+      <%= link_to user.name, user_path(user.id) %>
 
       <% unless user.has_request_from_current_user?(current_user.id) %>
         <%= button_to "Add",
