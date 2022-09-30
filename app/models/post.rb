@@ -19,4 +19,13 @@ class Post < ApplicationRecord
       "#{likes.count} likes"
     end
   end
+
+  def self.filter_posts(current_user)
+    friends_posts = []
+    friends = current_user.friends
+    friends.each do |friend|
+      friends_posts << friend.posts
+    end
+    current_user.posts + friends_posts
+  end
 end
