@@ -17,15 +17,20 @@
       <%= post.pretty_time %>
       <br>
 
-      <%= button_to post.display_likes, 
-                  likes_path,
-                  method: :post,
-                  params: { like: {user_id: current_user.id, post_id: post.id} } %>
+      <%= post.display_likes %>
+      <% unless post.users_who_like.include?(current_user) %>
+        <%= button_to "Like", 
+                    likes_path,
+                    method: :post,
+                    params: { like: {user_id: current_user.id, post_id: post.id} } %>
+      <% else %>
+        <%= button_to "Unlike", 
+                    like_path(0),
+                    method: :delete,
+                    params: { like: {user_id: current_user.id, post_id: post.id} } %>
+      <% end %>
+      
 
-      <%= button_to "Unlike", 
-                  like_path(0),
-                  method: :delete,
-                  params: { like: {user_id: current_user.id, post_id: post.id} } %>
     </div>
   <% end %>
 </ul>

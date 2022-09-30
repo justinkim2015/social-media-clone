@@ -10,7 +10,9 @@ class Post < ApplicationRecord
 
   def display_likes
     if likes.count.zero?
-      'Like'
+      ''
+    elsif likes.count == 1
+      "#{likes.count} like"
     else
       "#{likes.count} likes"
     end
