@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :users_who_like, through: :likes, source: :user
 
+  has_many :comments
+
   def pretty_time
     created_at.time.to_s[0..15]
   end
