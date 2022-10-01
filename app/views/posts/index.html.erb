@@ -11,9 +11,16 @@
   <% @posts.each do |post| %>
     <div class="box">
       <%= link_to post.user.name, user_path(post.user.id) %>
+
+      <%= button_to "X", 
+                  post_path(0),
+                  method: :delete,
+                  params: { post_id: post.id } %>
       <br>
+
       <%= post.body %>
       <br>
+      
       <%= post.pretty_time %>
       <br>
 
