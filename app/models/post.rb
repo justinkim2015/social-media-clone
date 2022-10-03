@@ -33,4 +33,8 @@ class Post < ApplicationRecord
   def author_name
     user.name
   end
+
+  def liked_by?(user)
+    users_who_like.include?(user)
+  end
 end

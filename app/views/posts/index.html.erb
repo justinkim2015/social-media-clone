@@ -24,7 +24,7 @@
         <br>
 
         <%= post.display_likes %>
-        <% unless post.users_who_like.include?(current_user) %>
+        <% unless post.liked_by?(current_user) %>
           <%= button_to "Like", 
                       likes_path,
                       method: :post,
@@ -40,7 +40,7 @@
 
         <% post.comments.each do |comment| %>
           <div class="box">
-            <%= link_to comment.user.name, user_path(comment.user.id) %>
+            <%= link_to comment.author_name, user_path(comment.user.id) %>
             <br>
             <%= comment.body %>
 
