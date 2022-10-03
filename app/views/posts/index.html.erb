@@ -9,21 +9,22 @@
   <% @posts.each do |post| %>
   
     <% if post.user == current_user || current_user.friends_with?(post.user) %>
-      <div class="container box is-flex is-flex-direction-column">
+      <div class="box">
       
         <div class="container is-flex">
           <%= render "shared/delete_post_button", {post: post, current_user: current_user} %>
           <p class="is-size-5"><%= link_to post.author_name, user_path(post.user.id) %> - <%= post.pretty_time %></p>
         </div>
 
-        <p class="container p-4"><%= post.body %></p>
+        <p class="container p-4 is-size-4"><%= post.body %></p>
   
         <div class="container is-flex">
           <%= render "shared/like_unlike", {post: post, current_user: current_user} %>
           <%= post.display_likes %>
+
+          <%= link_to "Comment", new_comment_path(post_id: post.id) %>
         </div>
 
-        <%= link_to "Comment", new_comment_path(post_id: post.id) %>
   
         <% post.comments.each do |comment| %>
           <div class="box">

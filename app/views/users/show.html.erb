@@ -1,3 +1,6 @@
+<%= render "shared/navbar"%>
+<%= render "shared/flash" %>
+
 <% @user.friends.each do |friend| %>
-  <%= friend.email %>
+  <li><%= friend.name %></li>
 <% end %>
