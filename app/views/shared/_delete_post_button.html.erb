@@ -1,0 +1,8 @@
+<% if current_user == post.user %>
+  <%= button_to "X", 
+              post_path(0),
+              method: :delete,
+              params: { post_id: post.id },
+              class: "button is-small is-rounded is-danger mr-2" %>
+<% end %>
+

@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_many :comments
 
   def pretty_time
-    created_at.time.to_s[0..15]
+    created_at.time.to_s[10..15]
   end
 
   def display_likes

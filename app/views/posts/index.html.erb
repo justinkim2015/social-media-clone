@@ -1,57 +1,39 @@
 <%= render "shared/navbar", notifs: @notifs %>
 <%= render "shared/flash" %>
-<h1>Title</h1>
 
-<%= render "shared/post_form" %>
-
-<ul>
+<div class="container">
+  <h1 class="title">Your feed:</h1>
+  
+  <%= render "shared/post_form" %>
+  
   <% @posts.each do |post| %>
-
+  
     <% if post.user == current_user || current_user.friends_with?(post.user) %>
-      <div class="box">
-        <%= link_to post.author_name, user_path(post.user.id) %>
+      <div class="container box is-flex is-flex-direction-column">
+      
+        <div class="container is-flex">
+          <%= render "shared/delete_post_button", {post: post, current_user: current_user} %>
+          <p class="is-size-5"><%= link_to post.author_name, user_path(post.user.id) %> - <%= post.pretty_time %></p>
+        </div>
 
-        <%= button_to "X", 
-                    post_path(0),
-                    method: :delete,
-                    params: { post_id: post.id } %>
-        <br>
-
-        <%= post.body %>
-        <br>
-
-        <%= post.pretty_time %>
-        <br>
-
-        <%= post.display_likes %>
-        <% unless post.liked_by?(current_user) %>
-          <%= button_to "Like", 
-                      likes_path,
-                      method: :post,
-                      params: { like: {user_id: current_user.id, post_id: post.id} } %>
-        <% else %>
-          <%= button_to "Unlike", 
-                      like_path(0),
-                      method: :delete,
-                      params: { like: {user_id: current_user.id, post_id: post.id} } %>
-        <% end %>
+        <p class="container p-4"><%= post.body %></p>
+  
+        <div class="container is-flex">
+          <%= render "shared/like_unlike", {post: post, current_user: current_user} %>
+          <%= post.display_likes %>
+        </div>
 
         <%= link_to "Comment", new_comment_path(post_id: post.id) %>
-
+  
         <% post.comments.each do |comment| %>
           <div class="box">
-            <%= link_to comment.author_name, user_path(comment.user.id) %>
-            <br>
+            <p><%= link_to comment.author_name, user_path(comment.user.id) %></p>
+  
             <%= comment.body %>
-
-            <%= button_to "Delete", 
-                        comment_path(0),
-                        method: :delete,
-                        params: { comment: {user_id: current_user.id, post_id: post.id} } %>
+            <%= render "shared/delete_comment_button", {current_user: current_user, post: post} %>
           </div>
         <% end %>
       </div>
-
     <% end %>
   <% end %>
-</ul>
+</div>

@@ -1,0 +1,5 @@
+<%= button_to "Delete", 
+            comment_path(0),
+            method: :delete,
+            params: { comment: {user_id: current_user.id, post_id: post.id} },
+            class: "button is-small" %>
