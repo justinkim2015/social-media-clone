@@ -29,4 +29,8 @@ class Post < ApplicationRecord
 
     posts + current_user.posts
   end
+
+  def author_name
+    user.name
+  end
 end

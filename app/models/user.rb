@@ -37,7 +37,15 @@ class User < ApplicationRecord
     friends_as_a + friends_as_b
   end
 
+  def friends_ids
+    friends_as_a_ids + friends_as_b_ids
+  end
+
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def friends_with?(user)
+    friends.include?(user)
   end
 end
