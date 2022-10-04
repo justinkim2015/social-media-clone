@@ -7,4 +7,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   resources :posts, :friend_requests, :friendships, :likes, :comments
   resources :users, only: [:index, :show]
+
+  # resources :users, only: [:index, :show] do
+  #   resource :edit_profile, only: [:show, :update]
+  # end
+
+  get '/users/:id/edit_profile', to: 'users#edit_profile'
+  post '/users/:id/edit_profile', to: 'users#update_profile'
 end

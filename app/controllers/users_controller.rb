@@ -8,4 +8,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def update_profile
+    @user = User.find(params[:id])
+
+    if @user.update(bio: params[:bio])
+      redirect_to user_path(params[:id])
+    else
+      render :edit_profile, status: :unprocessable_entity
+    end
+  end
 end

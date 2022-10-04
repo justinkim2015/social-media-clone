@@ -1,6 +1,19 @@
 <%= render "shared/navbar"%>
 <%= render "shared/flash" %>
 
-<% @user.friends.each do |friend| %>
-  <li><%= friend.name %></li>
-<% end %>
+<div class="container">
+  <div class="box">
+    <h2 class="title is-size-5"><%= @user.name %></h2>
+    <div class="container">
+      <p><%= @user.bio %></p>
+      <%= link_to "Edit profile", "#{params[:id]}/edit_profile" %>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 class="title is-size-5">Friends:</h2>
+    <% @user.friends.each do |friend| %>
+      <li><%= friend.name %></li>
+    <% end %>
+  </div>
+</div>
