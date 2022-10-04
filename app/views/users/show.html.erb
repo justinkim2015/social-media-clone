@@ -5,8 +5,12 @@
   <div class="box">
     <h2 class="title is-size-5"><%= @user.name %></h2>
     <div class="container">
-      <p><%= @user.bio %></p>
-      <%= link_to "Edit profile", "#{params[:id]}/edit_profile" %>
+      <p><%= @user.profile.bio %></p>
+      <% if current_user.profile.nil? && current_user == @user %>
+          <%= link_to "Add Bio", new_profile_path %>
+      <% elsif current_user == @user %>
+          <%= link_to "Edit bio", edit_profile_path %>        
+      <% end %>
     </div>
   </div>
 
@@ -14,6 +18,13 @@
     <h2 class="title is-size-5">Friends:</h2>
     <% @user.friends.each do |friend| %>
       <li><%= friend.name %></li>
+    <% end %>
+  </div>
+
+  <div class="box">
+    <h2 class="title is-size-5">Posts:</h2>
+    <% @user.posts.each do |post| %>
+      <div class="box"><%= post.body %></div>
     <% end %>
   </div>
 </div>
