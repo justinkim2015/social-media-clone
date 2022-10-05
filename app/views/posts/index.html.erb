@@ -1,9 +1,7 @@
 <%= render "shared/navbar", notifs: @notifs %>
 <%= render "shared/flash" %>
 
-<div class="container">
-  <h1 class="title">Your feed:</h1>
-  
+<div class="container">  
   <%= render "shared/post_form", model: @post %>
   
   <% @posts.each do |post| %>

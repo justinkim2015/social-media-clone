@@ -1,8 +1,8 @@
-<div class="box">
+<div class="container is-flex is-flex-direction-column is-align-items-center m-5">
   <h2 class="title">New Post</h2>
 
-  <%= form_with model: model, method: "post" do |f| %>
-    <%= f.text_area :body, class: 'input' %>
-    <%= f.submit "Submit Post", class: 'button' %>
+  <%= form_with model: model, class: 'is-flex is-flex-direction-column is-align-items-center', method: "post" do |f| %>
+    <%= f.text_area :body, cols: 50, rows: 3, placeholder: "What's going on?", class: 'textarea is-hovered has-background-white-bis'%>
+    <%= f.submit "Submit Post", class: 'button mt-4 is-rounded is-info' %>
   <% end %>
 </div>
