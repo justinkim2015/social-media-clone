@@ -1,4 +1,8 @@
-<%= form_with model: model, method: "post" do |f| %>
-  <%= f.text_area :body %>
-  <%= f.submit %>
-<% end %>
+<div class="box">
+  <h2 class="title">New Post</h2>
+
+  <%= form_with model: model, method: "post" do |f| %>
+    <%= f.text_area :body, class: 'input' %>
+    <%= f.submit "Submit Post", class: 'button' %>
+  <% end %>
+</div>

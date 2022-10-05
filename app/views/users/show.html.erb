@@ -18,13 +18,6 @@
     </div>
   </div>
 
-  <div class="box">
-    <h2 class="title is-size-5">Friends:</h2>
-    <% @user.friends.each do |friend| %>
-      <li><%= friend.name %></li>
-    <% end %>
-  </div>
-
   <%= render "shared/post_form", model: @post %>
 
   <div class="box">
@@ -33,4 +26,11 @@
       <%= render "shared/full_post", {current_user: current_user, post: post} %>
     <% end %>
   </div>
+
+  <div class="box">
+    <h2 class="title is-size-5">Friends:</h2>
+    <% @user.friends.each do |friend| %>
+      <li><%= link_to friend.name, user_path(friend.id) %></li>
+    <% end %>
+  </div>  
 </div>
