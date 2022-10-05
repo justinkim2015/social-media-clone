@@ -1,13 +1,13 @@
 <% unless post.liked_by?(current_user) %>
-  <%= button_to "Like", 
+  <%= button_to (image_tag "like.png", class: 'image is-16x16'), 
               likes_path,
               method: :post,
               params: { like: {user_id: current_user.id, post_id: post.id}},
-              class: "button is-small is-rounded is-primary" %>
+              class: "button is-small is-rounded is-white" %>
 <% else %>
-  <%= button_to "Unlike", 
+  <%= button_to (image_tag "dislike.png", class: 'image is-16x16'), 
               like_path(0),
               method: :delete,
               params: { like: {user_id: current_user.id, post_id: post.id},},
-              class: "button is-small is-rounded is-danger" %>
+              class: "button is-small is-rounded is-white" %>
 <% end %>
