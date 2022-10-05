@@ -22,9 +22,11 @@
         </a>
 
         <div class="navbar-dropdown">
-          <%= link_to "View profile", user_path(current_user.id) %>
-          <%= link_to "Edit login info", edit_user_registration_path %>
-          <%= link_to "Edit profile info", edit_profile_path(current_user.id) %>
+          <ul>
+            <li class='m-1'><%= link_to "View profile", user_path(current_user.id) %></li>
+            <li class='m-1'><%= link_to "Settings", edit_user_registration_path %></li>
+            <li class='m-1'><%= link_to "Edit profile", edit_profile_path(current_user.id) %></li>
+          </ul>
         </div>
 
       </div>
@@ -59,7 +61,7 @@
         </div>
       </div>
 
-      <div class="navbar-item"><%= button_to "Signout", destroy_user_session_path, method: :delete %></div>
+      <div class="navbar-item"><%= button_to "Signout", destroy_user_session_path, class: "button is-danger", method: :delete %></div>
     </div>
   </div>
 </div>

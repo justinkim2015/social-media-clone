@@ -1,4 +1,4 @@
-<%= form_with model: @post, method: "post" do |f| %>
-  <%= f.text_field :body %>
+<%= form_with model: model, method: "post" do |f| %>
+  <%= f.text_area :body %>
   <%= f.submit %>
 <% end %>

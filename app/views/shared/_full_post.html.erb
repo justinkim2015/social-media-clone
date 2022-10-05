@@ -1,0 +1,28 @@
+    <% if post.user == current_user || current_user.friends_with?(post.user) %>
+      <div class="box">
+      
+        <div class="container is-flex">
+          <p class="is-size-5"><%= link_to post.author_name, user_path(post.user.id) %> - <%= post.pretty_time %></p>
+          <%= render "shared/delete_post_button", {post: post, current_user: current_user} %>
+        </div>
+
+        <p class="container p-4 is-size-4"><%= post.body %></p>
+  
+        <div class="container is-flex">
+          <%= render "shared/like_unlike", {post: post, current_user: current_user} %>
+          <%= post.display_likes %>
+
+          <%= link_to "Comment", new_comment_path(post_id: post.id) %>
+        </div>
+
+  
+        <% post.comments.each do |comment| %>
+          <div class="box">
+            <p><%= link_to comment.author_name, user_path(comment.user.id) %></p>
+  
+            <%= comment.body %>
+            <%= render "shared/delete_comment_button", {current_user: current_user, post: post} %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
