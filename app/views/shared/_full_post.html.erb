@@ -2,6 +2,7 @@
       <div class="box">
       
         <div class="container is-flex">
+          <%= image_tag 'prof-placeholder.png', class: 'image is-24x24' %>
           <p class="is-size-5"><%= link_to post.author_name, user_path(post.user.id) %> - <%= post.pretty_time %></p>
           <%= render "shared/delete_post_button", {post: post, current_user: current_user} %>
         </div>

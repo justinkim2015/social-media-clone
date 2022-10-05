@@ -1,27 +1,30 @@
-<%= render "shared/navbar" %>
-<%= render "shared/flash" %>
+<%= render 'shared/navbar' %>
+<%= render 'shared/flash' %>
 
-<div class="box">
-  <h1 class="title">Add Friend:</h1>
+<div class='box'>
+  <h1 class='title'>Add Friend:</h1>
   <ul>
     <% @filtered_users.each do |user| %>  
-      <%= link_to user.name, user_path(user.id) %>
-
-      <% unless user.has_request_from_current_user?(current_user.id) %>
-        <%= button_to "Add",
-            friend_requests_path, 
-            method: :post, 
-            params: { friend_request: {requester_id: current_user.id, reciever_id: user.id} } %>
-
-      <% else %>
-        <%= button_to "Delete request",
-                      friend_request_path(0), 
-                      method: :delete, 
-                      params: {requester_id: current_user.id, reciever_id: user.id} %>
-      <% end %>
+      <div class='container is-flex'>
+        <%= image_tag 'prof-placeholder.png', class: 'image is-24x24' %>
+        <%= link_to user.name, user_path(user.id) %>
+        <% unless user.has_request_from_current_user?(current_user.id) %>
+          <%= button_to 'Add',
+              friend_requests_path,
+              method: :post,
+              params: { friend_request: {requester_id: current_user.id, reciever_id: user.id} },
+              class: 'button is-small is-rounded is-primary' %>
+        <% else %>
+          <%= button_to 'Delete request',
+                        friend_request_path(0),
+                        method: :delete,
+                        params: {requester_id: current_user.id, reciever_id: user.id},
+                        class: 'button is-small is-rounded is-danger' %>
+        <% end %>
+      </div>
     <% end %>
   </ul>
 </div>
 
-<%= link_to "home", root_path %>
+<%= link_to 'home', root_path %>
 
