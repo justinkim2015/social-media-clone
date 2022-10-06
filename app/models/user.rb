@@ -50,4 +50,8 @@ class User < ApplicationRecord
   def friends_with?(user)
     friends.include?(user)
   end
+
+  def profile_picture
+    profile.profile_pic
+  end
 end

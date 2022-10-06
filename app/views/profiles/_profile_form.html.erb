@@ -1,0 +1,6 @@
+<%= form_with model: @profile do |f| %>
+  <%= f.label :bio %><br>
+  <%= f.text_area :bio, autocomplete: "bio" %>
+  <%= f.file_field :profile_pic %>
+  <%= f.submit "Submit" %>
+<% end %>
