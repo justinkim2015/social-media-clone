@@ -16,7 +16,7 @@
               class: 'button is-small is-rounded is-primary' %>
         <% else %>
           <%= button_to 'Delete request',
-                        friend_request_path(0),
+                        friend_request_path('placeholder'),
                         method: :delete,
                         params: {requester_id: current_user.id, reciever_id: user.id},
                         class: 'button is-small is-rounded is-danger' %>

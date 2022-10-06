@@ -9,3 +9,8 @@
 #
 # two: {}
 # column: value
+
+one: 
+  id: 1
+  friend_a_id: 1
+  friend_b_id: 2

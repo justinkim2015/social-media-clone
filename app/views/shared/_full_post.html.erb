@@ -1,13 +1,19 @@
 <% if post.user == current_user || current_user.friends_with?(post.user) %>
   <div class="card mb-6">
     <div class="card-header">
-      <div class="card-icon">
+
+      <div class="card-icon column is-1">
         <%= image_tag 'prof-placeholder.png', class: 'image is-24x24' %>
       </div>
 
-      <div class="card-header-title">
-          <p class="is-size-5"><%= link_to post.author_name, user_path(post.user.id) %> - <%= post.pretty_time %></p>
+      <div class="card-header-title column is-2">
+        <p class="is-size-5"><%= link_to post.author_name, user_path(post.user.id) %> - <%= post.pretty_time %></p>
       </div>
+
+      <div class="column is-4 is-offset-8">
+        <%= render "shared/delete_post_button", {current_user: current_user, post: post} %>
+      </div>
+
     </div>
 
     <div class="card-content">
@@ -17,10 +23,13 @@
     <div class="card-footer">
       <div class="container is-flex">
         <%= render "shared/like_unlike", {post: post, current_user: current_user} %>
-        <%= post.display_likes %>
 
         <%= link_to "Comment", new_comment_path(post_id: post.id) %>
       </div>
+    </div>
+
+    <div class="card-footer">
+      <%= post.display_likes %>
     </div>
 
     <% post.comments.each do |comment| %>

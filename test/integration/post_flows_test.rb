@@ -6,6 +6,8 @@ class PostFlowsTest < ActionDispatch::IntegrationTest
   def setup
     sign_in users(:one)
     Rails.application.load_seed
+
+    @post = Post.first
   end
 
   test "can create post" do
@@ -18,5 +20,15 @@ class PostFlowsTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
     assert_select "li"
+  end
+
+  test 'can delete post' do
+    get "/posts"
+    assert_response :success
+
+    delete "/posts/#{@post.id}"
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
   end
 end

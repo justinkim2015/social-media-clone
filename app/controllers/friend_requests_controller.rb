@@ -11,10 +11,8 @@ class FriendRequestsController < ApplicationController
     redirect_back_or_to root_path
   end
 
-  # Right now I'm finding the relation with ALL the requests by querying the requestor and recievers IDs.  What I need to do is find the ID for the 
-  # actual friend request so it's just one.
   def destroy
-    @friend_request = FriendRequest.find_request(params[:requester_id], params[:reciever_id])
+    @friend_request = FriendRequest.find_by(requester_id: params[:requester_id], reciever_id: params[:reciever_id])
     @friend_request.destroy
     flash.notice = 'Friend invite revoked!'
 
