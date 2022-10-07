@@ -6,7 +6,7 @@
   <ul>
     <% @filtered_users.each do |user| %>  
       <div class='container is-flex'>
-        <%= image_tag 'prof-placeholder.png', class: 'image is-24x24' %>
+        <%= render "shared/profile_pic", {user: user, size: 'is-48x48'} %>
         <%= link_to user.name, user_path(user.id) %>
         <% unless user.has_request_from_current_user?(current_user.id) %>
           <%= button_to 'Add',

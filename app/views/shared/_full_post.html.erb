@@ -3,11 +3,11 @@
     <div class="card-header">
 
       <div class="card-icon column is-1">
-        <%= image_tag 'prof-placeholder.png', class: 'image is-24x24' %>
+        <%= render "shared/profile_pic", {user: post.user, size: "is-48x48"} %>
       </div>
 
       <div class="card-header-title column is-2">
-        <p class="is-size-5"><%= link_to post.author_name, user_path(post.user.id) %> - <%= post.pretty_time %></p>
+        <p class="is-size-5"><%= link_to post.author_name, user_path(post.user.id) %>  <%= post.pretty_time %></p>
       </div>
 
       <div class="column is-4 is-offset-8">
