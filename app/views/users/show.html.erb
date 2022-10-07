@@ -17,7 +17,6 @@
     <%= render "about_me", user: @user %>
   </div>
 
-
   <%= render "shared/post_form", model: @post %>
 
   <div class="box">
@@ -29,8 +28,13 @@
 
   <div class="box">
     <h2 class="title is-size-5">Friends:</h2>
-    <% @user.friends.each do |friend| %>
-      <li><%= link_to friend.name, user_path(friend.id) %></li>
-    <% end %>
+    <ul>
+      <% @user.friends.each do |friend| %>
+        <div class="container is-flex">
+          <li><%= render "shared/profile_pic", {user: friend, size: 'is-48x48'} %></li>
+          <li><%= link_to friend.name, user_path(friend.id) %></li>
+        </div>
+      <% end %>
+    </ul>
   </div>  
 </div>
