@@ -76,3 +76,4 @@ end
 
 gem 'cssbundling-rails'
 
+gem "letter_opener", group: :development
