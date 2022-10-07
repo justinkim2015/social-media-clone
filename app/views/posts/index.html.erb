@@ -1,10 +1,10 @@
-<%= render "shared/navbar", notifs: @notifs %>
+<%= render "shared/navbar", {notifs: @notifs} %>
 <%= render "shared/flash" %>
 
 <div class="container">  
   <%= render "shared/post_form", model: @post %>
   
   <% @posts.each do |post| %>
-    <%= render "shared/full_post", {current_user: current_user, post: post} %>
+    <%= render "shared/full_post", {post: post} %>
   <% end %>
 </div>

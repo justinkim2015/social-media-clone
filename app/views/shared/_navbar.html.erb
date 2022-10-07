@@ -25,7 +25,7 @@
           <ul>
             <li class='m-1'><%= link_to "View profile", user_path(current_user.id) %></li>
             <li class='m-1'><%= link_to "Settings", edit_user_registration_path %></li>
-            <li class='m-1'><%= link_to "Edit profile", edit_profile_path(current_user.id) %></li>
+            <li class="m-1"><%= render "shared/add_edit_prof", {user: current_user} %></li>
           </ul>
         </div>
 

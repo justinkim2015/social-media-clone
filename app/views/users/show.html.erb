@@ -12,11 +12,8 @@
         <p><%= @user.profile.bio %></p>
       <% end %>
 
-      <% if current_user.profile.nil? && current_user == @user %>
-          <%= link_to "Add Bio", new_profile_path %>
-      <% elsif current_user == @user %>
-          <%= link_to "Edit bio", edit_profile_path %>        
-      <% end %>
+      <%= render "shared/add_edit_prof", {user: @user} %>
+
     </div>
   </div>
 
