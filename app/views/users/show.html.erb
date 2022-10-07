@@ -2,9 +2,8 @@
 <%= render "shared/flash" %>
 
 <div class="container">
-  <div class="box">
-    <div class="container">
-
+  <div class="box columns is-centered">
+    <div class="column has-text-centered">
       <%= render "shared/profile_pic", {user: @user, size: 'is-128x128'} %>
 
       <h2 class="title is-size-5"><%= @user.name %></h2>
@@ -13,9 +12,11 @@
       <% end %>
 
       <%= render "shared/add_edit_prof", {user: @user} %>
-
     </div>
+
+    <%= render "about_me", user: @user %>
   </div>
+
 
   <%= render "shared/post_form", model: @post %>
 

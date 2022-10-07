@@ -1,0 +1,57 @@
+<% if !user.profile.nil? %>
+  <div class="card column">
+    <div class="card-header">
+      <div class="card-header-title">
+        <h2 class="title ">About me:</h2>
+      </div>
+    </div>
+    
+    <div class="card-footer">
+      <p class='card-footer-item'>Gender: <%= user.profile.gender %></p>
+    </div>
+
+    <div class="card-footer">
+      <p class='card-footer-item'>Location: <%= user.profile.location %></p>
+    </div>
+
+    <div class="card-footer">
+      <p class='card-footer-item'>Relationship Status: <%= user.profile.relationship_status %></p>
+    </div>
+
+    <div class="card-footer">
+      <p class='card-footer-item'>Occupation: <%= user.profile.occupation %></p>
+    </div>
+
+    <div class="card-footer">
+      <p class='card-footer-item'>Education: <%= user.profile.education %></p>
+    </div>
+  </div>  
+<% else %>
+    <div class="card column">
+    <div class="card-header">
+      <div class="card-header-title">
+        <h2 class="title ">About me:</h2>
+      </div>
+    </div>
+    
+    <div class="card-footer">
+      <p class='card-footer-item'>Gender:</p>
+    </div>
+
+    <div class="card-footer">
+      <p class='card-footer-item'>Location:</p>
+    </div>
+
+    <div class="card-footer">
+      <p class='card-footer-item'>Relationship Status:</p>
+    </div>
+
+    <div class="card-footer">
+      <p class='card-footer-item'>Occupation:</p>
+    </div>
+
+    <div class="card-footer">
+      <p class='card-footer-item'>Education:</p>
+    </div>
+  </div>  
+<% end %>
