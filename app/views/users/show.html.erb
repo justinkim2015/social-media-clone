@@ -17,8 +17,6 @@
     <%= render "about_me", user: @user %>
   </div>
 
-  <%= render "shared/post_form", model: @post %>
-
   <div class="box">
     <h2 class="title is-size-5">Posts:</h2>
     <% @user.posts.each do |post| %>
