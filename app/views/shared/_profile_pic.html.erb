@@ -1,7 +1,7 @@
 <figure class="is-inline-block image <%= size %>" >  
-  <% if user.profile.nil? || user.profile_picture.nil? %>
-    <%= image_tag "prof-placeholder.png", class: "is-rounded" %>
-  <% else %>
+  <% if user.profile_picture.attached? %>
     <%= image_tag url_for(user.profile_picture), class: "is-rounded" %>
+  <% else %>
+    <%= image_tag "prof-placeholder.png", class: "is-rounded" %>
   <% end %>
 </figure>
