@@ -2,9 +2,10 @@
 
 To-do
 
-Oct 7 09:51:56 PM  rake aborted!
-Oct 7 09:51:56 PM  StandardError: An error has occurred, this and all later migrations canceled:
-Oct 7 09:51:56 PM  
-Oct 7 09:51:56 PM  PG::DuplicateTable: ERROR:  relation "profiles" already exists
+Oct 10 05:22:17 PM  [69] ! Unable to load application: RuntimeError: Missing service adapter for "S3"
 
-Oct 7 09:59:55 PM  ActiveRecord::StatementInvalid: PG::DuplicateTable: ERROR:  relation "profiles" already exists
+bundler: failed to load command: puma (/opt/render/project/.gems/bin/puma)
+
+Oct 10 05:22:17 PM  /opt/render/project/.gems/ruby/3.1.0/gems/activestorage-7.0.4/lib/active_storage/service/configurator.rb:33:in `rescue in resolve': Missing service adapter for "S3" (RuntimeError)
+
+Oct 10 05:22:17 PM  /opt/render/project/rubies/ruby-3.1.2/lib/ruby/site_ruby/3.1.0/bundler/rubygems_integration.rb:280:in `block (2 levels) in replace_gem': aws-sdk-s3 is not part of the bundle. Add it to your Gemfile. (Gem::LoadError)

@@ -77,3 +77,5 @@ end
 gem 'cssbundling-rails'
 
 gem "letter_opener", group: :development
+
+gem "aws-sdk-s3", require: false
