@@ -1,13 +1,13 @@
 <%= render 'shared/navbar' %>
 <%= render 'shared/flash' %>
 
-<div class='box'>
+<div class="container">
   <h1 class='title'>Add Friend:</h1>
   <ul>
-    <% @filtered_users.each do |user| %>  
+    <% @filtered_users.each do |user| %>
       <div class='container is-flex'>
         <%= render "shared/profile_pic", {user: user, size: 'is-48x48'} %>
-        <%= link_to user.name, user_path(user.id) %>
+        <%= link_to user.name, user_path(user.id), class: "mx-1" %>
         <% unless user.has_request_from_current_user?(current_user.id) %>
           <%= button_to 'Add',
               friend_requests_path,
@@ -19,7 +19,7 @@
                         friend_request_path('placeholder'),
                         method: :delete,
                         params: {requester_id: current_user.id, reciever_id: user.id},
-                        class: 'button is-small is-rounded is-danger' %>
+                        class: 'button is-small is-rounded is-danger mx-1' %>
         <% end %>
       </div>
     <% end %>
