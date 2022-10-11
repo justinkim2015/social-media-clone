@@ -1,10 +1,9 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create :send_mail, :create_profile
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook]
 
   has_many :posts
 
@@ -55,6 +54,10 @@ class User < ApplicationRecord
 
   def profile_picture
     profile.profile_pic
+  end
+
+  def self.from_omniauth(auth)
+    find_by(provider: auth.provider, uid: auth.uid)
   end
 
   private

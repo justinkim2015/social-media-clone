@@ -79,3 +79,9 @@ gem 'cssbundling-rails'
 gem "letter_opener", group: :development
 
 gem "aws-sdk-s3", require: false
+
+gem 'omniauth-facebook'
+
+gem 'omniauth-rails_csrf_protection'
+
+gem 'figaro'

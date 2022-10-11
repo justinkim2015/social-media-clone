@@ -2,21 +2,22 @@
 
 To-do
 
-Oct 10 05:22:17 PM  [69] ! Unable to load application: RuntimeError: Missing service adapter for "S3"
+Okay, I thought it would be pretty straightforward to fix this bug with "Sorry something went wrong" but now I'm kind of lost.  below is the setup I've done so far for my omniauth but I'm still getting the page error from facebook shown above.  I made two buttons, one with turbo enabled and one with it disabled just to see if it changes anything at the moment but it doesn't yet.  
 
-bundler: failed to load command: puma (/opt/render/project/.gems/bin/puma)
+I read that possibly my redirect_uri might be wrong 
 
-Oct 10 05:22:17 PM  /opt/render/project/.gems/ruby/3.1.0/gems/activestorage-7.0.4/lib/active_storage/service/configurator.rb:33:in `rescue in resolve': Missing service adapter for "S3" (RuntimeError)
+```
+class User < ApplicationRecord
 
-Oct 10 05:22:17 PM  /opt/render/project/rubies/ruby-3.1.2/lib/ruby/site_ruby/3.1.0/bundler/rubygems_integration.rb:280:in `block (2 levels) in replace_gem': aws-sdk-s3 is not part of the bundle. Add it to your Gemfile. (Gem::LoadError)
+devise :database_authenticatable, :registerable,
+       :recoverable, :rememberable, :validatable,
+       :omniauthable, omniauth_providers: %i[facebook]
+```
+```
+config.omniauth :facebook, "APP_ID", "APP_SECRET", scope: 'email', info_fields: 'email,name'
+```
+```
+    <%= button_to "(turbo-off)Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),       :data =>{turbo: false} %><br />
 
-
-
-Oct 10 05:33:05 PM  [72] ! Unable to load application: Aws::Sigv4::Errors::MissingCredentialsError: missing credentials, provide credentials with one of the following options:
-Oct 10 05:33:05 PM    - :access_key_id and :secret_access_key
-Oct 10 05:33:05 PM    - :credentials
-Oct 10 05:33:05 PM    - :credentials_provider
-Oct 10 05:33:05 PM  bundler: failed to load command: puma (/opt/render/project/.gems/bin/puma)
-Oct 10 05:33:05 PM  /opt/render/project/.gems/ruby/3.1.0/gems/aws-sigv4-1.5.2/lib/aws-sigv4/signer.rb:654:in `extract_credentials_provider': missing credentials, provide credentials with one of the following options: (Aws::Sigv4::Errors::MissingCredentialsError)
-Oct 10 05:33:05 PM    - :access_key_id and :secret_access_key
-Oct 10 05:33:05 PM    - :credentials
+    <%= button_to "(turbo-on)Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+```
