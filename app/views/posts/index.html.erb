@@ -2,9 +2,22 @@
 <%= render "shared/flash" %>
 
 <div class="container">  
-  <%= render "shared/post_form", model: @post %>
+  <%= render "shared/post_form", model: @new_post %>
   
   <% @posts.each do |post| %>
     <%= render "shared/full_post", {post: post} %>
+  <% end %>
+</div>
+
+
+<div class="box">
+  <% @posts.each do |post| %>
+    <%= turbo_frame_tag post do %>
+      <div class="box my-2">
+        <li><%= post.body %></li> 
+        <br>
+        <%= link_to "Edit Post", edit_post_path(post.id) %>
+      </div>
+    <% end %>
   <% end %>
 </div>

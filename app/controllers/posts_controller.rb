@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
     # @posts = Post.filter_posts(current_user)
     @posts = Post.all.order(id: :desc)
-    @post = Post.new
+    @new_post = Post.new
     @notifs = current_user.recieved_friend_requests
   end
 
@@ -30,6 +30,20 @@ class PostsController < ApplicationController
     @post.destroy
     flash.notice = "Post destroyed"
     redirect_back_or_to root_path
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unproceesable_entity
+    end
   end
 
   private

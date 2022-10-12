@@ -1,0 +1,6 @@
+<%= turbo_frame_tag @post do %>
+  Content for our Post!
+  <%= link_to "Edit Post", edit_post_path(@post) %>
+<% end %>
+
+<p>This shouldn't change</p>
