@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 
   def welcome_email
     @user = params[:user]
-    @url = 'https://railsbook.onrender.com/'
+    @url = 'https://rails-book.onrender.com/'
     mail(to: @user.email, subject: 'Welcome to Railsbook')
   end
 end
