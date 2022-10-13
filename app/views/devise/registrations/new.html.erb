@@ -1,5 +1,8 @@
-<div class="container level" style="height: 100vh;">
-  <div class="box column is-three-fifths is-offset-one-fifth">
+<%= render "shared/hero" %>
+<%= render "shared/flash" %>
+
+<div class="container level" style="height: 80vh;">
+  <div class="column is-three-fifths is-offset-one-fifth">
     <h2 class='title'>Sign up</h2>
     
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

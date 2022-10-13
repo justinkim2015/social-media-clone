@@ -1,7 +1,8 @@
+<%= render "shared/hero" %>
 <%= render "shared/flash" %>
 
-<div class="container level" style="height: 100vh;">
-  <div class="box column is-three-fifths is-offset-one-fifth">
+<div class="container level" style="height: 80vh;">
+  <div class="column is-three-fifths is-offset-one-fifth">
     <h2 class='title'>Log in</h2>
     
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -31,6 +32,6 @@
     
     <%= render "devise/shared/links" %>
     
-    <%= button_to "(turbo-on)Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+    <%= button_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "button", data: {turbo: false} %>
   </div>
 </div>

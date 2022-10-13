@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div class="navbar-item"><%= button_to "Signout", destroy_user_session_path, class: "button is-danger", method: :delete %></div>
+      <div class="navbar-item"><%= button_to "Signout", destroy_user_session_path, class: "button is-danger", method: :delete, data: {turbo: false} %></div>
     </div>
   </div>
 </div>
