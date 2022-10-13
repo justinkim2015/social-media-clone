@@ -2,11 +2,11 @@
 <%= render "shared/flash" %>
 
 <div class="container">
-  <div class="box columns is-centered">
+  <div class="container level columns is-centered mt-6">
     <div class="column has-text-centered">
       <%= render "shared/profile_pic", {user: @user, size: 'is-128x128'} %>
 
-      <h2 class="title is-size-5"><%= @user.name %></h2>
+      <h2 class="title is-size-5 mt-1"><%= @user.name %></h2>
       <% if defined?(@user.profile.bio) %>
         <p><%= @user.profile.bio %></p>
       <% end %>
@@ -17,8 +17,10 @@
     <%= render "about_me", user: @user %>
   </div>
 
-  <div class="box">
-    <h2 class="title is-size-5">Posts:</h2>
+  <div class="container">
+    <div class="container has-text-centered my-6">
+      <h2 class="title is-size-4">Posts:</h2>
+    </div>
     <% @user.posts.each do |post| %>
       <%= render "shared/full_post", {current_user: current_user, post: post} %>
     <% end %>
