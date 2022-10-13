@@ -8,16 +8,3 @@
     <%= render "shared/full_post", {post: post} %>
   <% end %>
 </div>
-
-
-<div class="box">
-  <% @posts.each do |post| %>
-    <div class="box">
-      <%= turbo_frame_tag post do %>
-        <li><%= post.body %></li>
-        <br>
-        <%= link_to "Edit Post", edit_post_path(post.id) %>
-      <% end %>
-    </div>
-  <% end %>
-</div>

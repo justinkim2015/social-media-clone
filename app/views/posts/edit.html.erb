@@ -1,7 +1,7 @@
 <%= turbo_frame_tag @post do %>
 
   <%= form_with model: @post do |f| %>
-    <%= f.text_area :body, cols: 50, rows: 3, placeholder: "What's going on?", class: 'textarea is-hovered has-background-white-bis'%>
-    <%= f.submit "Update", class: 'button mt-4 is-rounded is-info is-small' %>
+    <%= f.text_area :body, placeholder: "What's going on?", class: 'textarea is-hovered has-background-white-bis'%>
+    <%= f.submit "Update", class: 'button is-primary is-rounded is-small' %>
   <% end %>
 <% end %>

@@ -1,7 +1,12 @@
 <%= turbo_frame_tag @post do %>
   <div class="card-content">
-    <%= post.body %>
+    <div class="card-content">
+      <%= post.body %>
+
+      <% if post.user == current_user %>
+        <%= button_to "Edit Post", edit_post_path(post), method: :get %>
+      <% end %>
+    </div>
   </div>
   
-  <%= link_to "Edit Post", edit_post_path(@post) %>
 <% end %>
