@@ -1,0 +1,5 @@
+<%= button_to 'Delete request',
+              friend_request_path('placeholder'),
+              method: :delete,
+              params: {requester_id: current_user.id, reciever_id: user.id},
+              class: 'button is-small is-rounded is-danger mx-1' %>
