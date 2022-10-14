@@ -5,7 +5,7 @@
   <%= render "shared/post_form", {model: @new_post} %>
   
   <% @posts.each do |post| %>
-    <%#= render "shared/full_post", {post: post} %>
-    <%= render "shared/full_post_media", {post: post} %>
+    <%= render "shared/full_post", {post: post} %>
+    <%#= render "shared/full_post_old", {post: post} %>
   <% end %>
 </div>

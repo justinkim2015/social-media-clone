@@ -1,13 +1,13 @@
 <% unless post.liked_by?(current_user) %>
-  <%= button_to (image_tag "like.png", class: 'image is-16x16'), 
-              likes_path,
-              method: :post,
-              params: { like: {user_id: current_user.id, post_id: post.id}},
-              class: "button is-small is-rounded is-white" %>
+  <%= link_to 'Like', 
+              likes_path({ like: {user_id: current_user.id, post_id: post.id}}),
+              data: { turbo_method: :post },
+              class: 'has-text-primary'
+              %>
 <% else %>
-  <%= button_to (image_tag "dislike.png", class: 'image is-16x16'), 
-              like_path(0),
-              method: :delete,
-              params: { like: {user_id: current_user.id, post_id: post.id},},
-              class: "button is-small is-rounded is-white" %>
+  <%= link_to 'Dislike', 
+              like_path({id: 0, like: {user_id: current_user.id, post_id: post.id} }),
+              data: { turbo_method: :delete },
+              class: 'has-text-danger'
+              %>
 <% end %>

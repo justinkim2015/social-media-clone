@@ -1,52 +1,54 @@
-<% if post.user == current_user || current_user.friends_with?(post.user) %>
-  <div class="card mb-6">
-    <div class="card-header">
+<article class="media box">
 
-      <div class="card-icon column is-1">
-        <%= render "shared/profile_pic", {user: post.user, size: "is-48x48"} %>
-      </div>
+  <figure class="media-left">
+    <%= render "shared/profile_pic", {user: post.user, size: "is-48x48"} %>
+  </figure>
 
-      <div class="card-header-title column is-2">
-        <p class="is-size-5"><%= link_to post.author_name, user_path(post.user.id) %>  <%= post.pretty_time %></p>
-      </div>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
 
-      <div class="column is-4 is-offset-8">
-        <%= render "shared/delete_post_button", {current_user: current_user, post: post} %>
-      </div>
+        <%= turbo_frame_tag post do %>
+          <br><%= post.body %><br>
 
-    </div>
-
-    <%= turbo_frame_tag post do %>
-      <div class="card-content">
-        <%= post.body %>
-
-        <% if post.user == current_user %>
-          <%= button_to "Edit Post", edit_post_path(post), method: :get %>
+          <small>
+              <%= render "shared/like_unlike", {post: post, current_user: current_user} %> ·
+              <%= link_to "Comment", new_comment_path(post_id: post.id) %> · 
+              <%= render "shared/edit_post_button", post: post %> 
+              <%# Maybe I can target the above turbo-frame with the above link and remove all these links from the frame, we'll see %>
+              <%= render "shared/delete_post_button", {current_user: current_user, post: post} %> 
+              <%= post.pretty_time %>
+          </small>
         <% end %>
-      </div>
+      </p>
+    </div>
+    
+    <% if post.has_likes? %>
+      <article class="media">
+        <%= post.display_likes %>
+      </article>
     <% end %>
-
-    <div class="card-footer">
-      <div class="container is-flex">
-        <%= render "shared/like_unlike", {post: post, current_user: current_user} %>
-
-        <%= link_to "Comment", new_comment_path(post_id: post.id) %>
-      </div>
-    </div>
-
-    <div class="card-footer">
-      <%= post.display_likes %>
-    </div>
 
     <% post.comments.each do |comment| %>
-      <div class="card-footer p-3">
-        <p><%= link_to comment.author_name, user_path(comment.user.id) %></p>
-        
-        <%= comment.body %>
-        <%= render "shared/delete_comment_button", {current_user: current_user, post: post} %>
-      </div>
+      <article class="media">
+        <figure class="media-left">
+          <%= render "shared/profile_pic", {user: comment.user, size: "is-48x48"} %>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong><%= link_to comment.user.name, user_path(comment.user.id) %></strong>
+              <br>
+                <%= comment.body %>
+              <br>
+              <small><%= render "shared/delete_comment_button", {comment: comment} %></small>
+            </p>
+          </div>
+        </div>
+      </article>
     <% end %>
-    
-  </div>
-<% end %>
 
+  </div>
+
+</article>

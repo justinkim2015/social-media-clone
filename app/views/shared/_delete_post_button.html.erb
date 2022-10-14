@@ -1,6 +1,6 @@
 <% if current_user == post.user %>
-  <%= link_to "Delete", 
+  <%= link_to "Delete ·", 
               post_path(post.id),
-              data: { turbo_method: :delete }
+              data: { turbo_method: :delete, turbo_frame: "_top" }
               %>
 <% end %>
