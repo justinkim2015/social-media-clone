@@ -1,14 +1,17 @@
 <%= render 'shared/navbar' %>
 <%= render 'shared/flash' %>
 
-<div class="container box">
-  <%= form_with model: @comment do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
+<div class="container mt-6">
+  <%= render 'shared/full_post', post: @post %>
+  
+  
+  <%= form_with model: @comment, class: "is-flex is-flex-direction-column is-align-items-center" do |f| %>
     <%= f.hidden_field :post_id, value: @post.id %>
-    
-    <%= f.label :body, "Comment:" %>
-    <%= f.text_area :body %>
 
-    <%= f.submit %>
+    <div class="container has-text-centered">
+      <%= f.label :body, "New Comment", class: 'label' %>
+      <%= f.text_area :body, cols: 50, placeholder: "What's going on?", class: 'textarea' %>
+      <%= f.submit 'Comment', class: 'button my-2 is-rounded is-link' %>
+    </div>
   <% end %>
 </div>

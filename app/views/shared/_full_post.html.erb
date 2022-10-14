@@ -14,7 +14,7 @@
 
           <small>
               <%= render "shared/like_unlike", {post: post, current_user: current_user} %> ·
-              <%= link_to "Comment", new_comment_path(post_id: post.id) %> · 
+              <%= link_to "Comment", new_comment_path(post_id: post.id), data: { turbo_frame: "_top"} %> · 
               <%= render "shared/edit_post_button", post: post %> 
               <%# Maybe I can target the above turbo-frame with the above link and remove all these links from the frame, we'll see %>
               <%= render "shared/delete_post_button", {current_user: current_user, post: post} %> 
