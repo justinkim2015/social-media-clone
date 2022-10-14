@@ -1,5 +1,6 @@
-<%= button_to "Delete", 
-            comment_path(0),
-            method: :delete,
-            params: { comment: {user_id: current_user.id, post_id: post.id} },
-            class: "button is-small" %>
+<% if current_user == comment.user %>
+  <%=  link_to "Delete", 
+              comment_path(comment.id),
+              data: { turbo_method: :delete }
+              %>
+<% end %>

@@ -20,6 +20,10 @@ class Post < ApplicationRecord
     end
   end
 
+  def has_likes?
+    true unless likes.count.zero?
+  end
+
   def self.filter_posts(current_user)
     posts = []
 

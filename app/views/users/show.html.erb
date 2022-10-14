@@ -19,7 +19,7 @@
 
   <div class="container">
     <div class="container has-text-centered my-6">
-      <h2 class="title is-size-4">Posts:</h2>
+      <h2 class="title is-size-3">Posts:</h2>
     </div>
     <% @user.posts.each do |post| %>
       <%= render "shared/full_post", {current_user: current_user, post: post} %>

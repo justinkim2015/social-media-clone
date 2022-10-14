@@ -41,7 +41,7 @@
     <% post.comments.each do |comment| %>
       <div class="card-footer p-3">
         <p><%= link_to comment.author_name, user_path(comment.user.id) %></p>
-
+        
         <%= comment.body %>
         <%= render "shared/delete_comment_button", {current_user: current_user, post: post} %>
       </div>

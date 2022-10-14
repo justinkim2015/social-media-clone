@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find_by(post_id: params[:comment][:post_id], user_id: params[:comment][:user_id])
+    @comment = Comment.find(params[:id])
 
     @comment.destroy
     flash.notice = "Comment deleted"

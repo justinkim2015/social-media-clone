@@ -1,6 +1,6 @@
 <% if current_user == post.user %>
-  <%= button_to "X", 
+  <%= link_to "Delete", 
               post_path(post.id),
-              method: :delete,
-              class: "button is-small is-rounded is-danger mr-2" %>
+              data: { turbo_method: :delete }
+              %>
 <% end %>
