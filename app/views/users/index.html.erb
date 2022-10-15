@@ -1,20 +1,18 @@
 <%= render 'shared/navbar' %>
 <%= render 'shared/flash' %>
 
-<div class="container">
-  <h1 class='title'>Add Friend:</h1>
-  <ul>
-    <% @filtered_users.each do |user| %>
-      <div class='container is-flex'>
+<div class="container has-text-centered mt-6">
+  <h1 class='title'>Add New Friend</h1>
+  
+  <% @filtered_users.each do |user| %>
+      <div class="container is-flex is-justify-content-center my-2 level">
         <%= render "shared/profile_pic", {user: user, size: 'is-48x48'} %>
-        <%= link_to user.name, user_path(user.id), class: "mx-1" %>
-
+        <%= link_to user.name, user_path(user.id), class: "mx-2" %>
         <% unless user.has_request_from_current_user?(current_user.id) %>
           <%= render 'create_req', user: user %>
         <% else %>
           <%= render 'delete_req', user: user %>
         <% end %>
       </div>
-    <% end %>
-  </ul>
+  <% end %>
 </div>

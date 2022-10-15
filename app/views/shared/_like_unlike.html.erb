@@ -1,13 +1,13 @@
 <% unless post.liked_by?(current_user) %>
-  <%= link_to 'Like', 
-              likes_path({ like: {user_id: current_user.id, post_id: post.id}}),
-              data: { turbo_method: :post },
-              class: 'has-text-primary'
-              %>
+    <%= link_to 'Like', 
+                likes_path({ like: {user_id: current_user.id, post_id: post.id}}),
+                data: { turbo_method: :post, turbo_frame: 'likes' },
+                class: 'has-text-primary'
+                %>
 <% else %>
-  <%= link_to 'Dislike', 
-              like_path({id: 0, like: {user_id: current_user.id, post_id: post.id} }),
-              data: { turbo_method: :delete },
-              class: 'has-text-danger'
-              %>
+    <%= link_to 'Dislike', 
+                like_path({id: 0, like: {user_id: current_user.id, post_id: post.id} }),
+                data: { turbo_method: :delete, turbo_frame: 'likes' },
+                class: 'has-text-danger'
+                %>
 <% end %>

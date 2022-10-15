@@ -23,12 +23,18 @@
         <% end %>
       </p>
     </div>
-    
-    <% if post.has_likes? %>
-      <article class="media">
-        <%= post.display_likes %>
-      </article>
+
+    <%#= link_to "Likes", like_path(post.id), data: { turbo_frame: 'likes' } %>
+
+    <%= turbo_frame_tag "likes" do %>
+      <% if post.has_likes? %>
+        <article class="media">
+          <%= post.display_likes %>
+        </article>
+      <% end %>
     <% end %>
+
+
 
     <% post.comments.each do |comment| %>
       <article class="media">

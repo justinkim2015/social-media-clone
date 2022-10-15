@@ -4,7 +4,7 @@ class LikesController < ApplicationController
 
     @like.save
 
-    redirect_back_or_to root_path
+    redirect_to like_path(like_params[:post_id])
   end
 
   def destroy
@@ -12,6 +12,11 @@ class LikesController < ApplicationController
     @like.destroy
 
     redirect_back_or_to root_path, status: :see_other
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @likes = @post.display_likes
   end
 
   private
