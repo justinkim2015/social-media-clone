@@ -16,6 +16,7 @@ class LikesController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_id = @post.id
     @likes = @post.display_likes
   end
 

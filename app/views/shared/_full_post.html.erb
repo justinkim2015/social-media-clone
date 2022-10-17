@@ -22,9 +22,9 @@
       </p>
     </div>
 
-    <%= turbo_frame_tag post do %>
+    <%= turbo_frame_tag "like_#{post.id}" do %>
       <article class="media">
-        <%= render "shared/like_unlike", {post: post, current_user: current_user} %>
+        <%= render "shared/like_unlike", {post: post} %>
 
         <% if post.has_likes? %>
             <%= post.display_likes %>

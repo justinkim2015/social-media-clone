@@ -1,4 +1,5 @@
-<%= turbo_frame_tag @post do %>
+<%= turbo_frame_tag "like_#{@post.id}" do %>
+<%#= turbo_frame_tag @post do %>
 
   <article class="media">
     <%= render "shared/like_unlike", {post: @post, current_user: current_user} %>

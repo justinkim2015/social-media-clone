@@ -6,3 +6,5 @@ To-do
 -add some javascript and fix styling
 - continue editing the add friends page
 -TURBO FRAMES LIKES DOESNT WORK
+
+-Turbo frame tags cant be numbers
