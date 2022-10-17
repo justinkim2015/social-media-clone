@@ -13,8 +13,6 @@
           <br><%= post.body %><br>
 
           <small>
-              <%= render "shared/like_unlike", {post: post, current_user: current_user} %> ·
-              <%= link_to "Comment", new_comment_path(post_id: post.id), data: { turbo_frame: "_top"} %> · 
               <%= render "shared/edit_post_button", post: post %> 
               <%# Maybe I can target the above turbo-frame with the above link and remove all these links from the frame, we'll see %>
               <%= render "shared/delete_post_button", {current_user: current_user, post: post} %> 
@@ -24,14 +22,14 @@
       </p>
     </div>
 
-    <%#= link_to "Likes", like_path(post.id), data: { turbo_frame: 'likes' } %>
+    <%= turbo_frame_tag post do %>
+      <article class="media">
+        <%= render "shared/like_unlike", {post: post, current_user: current_user} %>
 
-    <%= turbo_frame_tag "likes" do %>
-      <% if post.has_likes? %>
-        <article class="media">
-          <%= post.display_likes %>
-        </article>
-      <% end %>
+        <% if post.has_likes? %>
+            <%= post.display_likes %>
+        <% end %>
+      </article>
     <% end %>
 
 
@@ -54,7 +52,10 @@
         </div>
       </article>
     <% end %>
-
   </div>
+
+  <article>
+    <%= link_to "Comment", new_comment_path(post_id: post.id), data: { turbo_frame: "_top"} %>
+  </article>
 
 </article>
