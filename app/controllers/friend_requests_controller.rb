@@ -7,7 +7,7 @@ class FriendRequestsController < ApplicationController
     else
       flash.alert = 'Error!'
     end
-    
+
     redirect_back_or_to root_path
   end
 

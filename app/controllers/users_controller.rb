@@ -10,14 +10,4 @@ class UsersController < ApplicationController
     @posts = @user.posts.order(id: :desc)
     @comment = current_user.comments.build
   end
-
-  def update_profile
-    @user = User.find(params[:id])
-
-    if @user.update(bio: params[:bio])
-      redirect_to user_path(params[:id])
-    else
-      render :edit_profile, status: :unprocessable_entity
-    end
-  end
 end

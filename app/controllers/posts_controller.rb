@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :own_post, only: [:edit, :update, :destroy]
+
   def index
     @posts = Post.all.order(id: :desc)
     @new_post = Post.new
@@ -51,5 +53,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:body, :photo)
+  end
+
+  def own_post
+    redirect_to root_path unless current_user == Post.find(params[:id]).user
   end
 end

@@ -2,7 +2,7 @@
               friendships_path,
               method: :post,
               params: { friendship: {friend_a_id: current_user.id, friend_b_id: user.id} },
-              class: 'button is-small is-rounded is-link' %>
+              class: 'button is-small is-rounded is-link mr-1' %>
 
 <%= button_to "No",
               friend_request_path(0),
