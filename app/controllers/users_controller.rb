@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post = Post.new
+    @comment = current_user.comments.build
   end
 
   def update_profile

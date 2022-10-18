@@ -1,0 +1,9 @@
+<%= form_with model: comment, class: "is-flex is-flex-direction-column is-align-items-center" do |f| %>
+  <%= f.hidden_field :post_id, value: post.id %>
+
+  <div class="container has-text-centered">
+    <%= f.label :body, "New Comment", class: 'label' %>
+    <%= f.text_area :body, cols: 50, placeholder: "What's going on?", class: 'textarea' %>
+    <%= f.submit 'Comment', class: 'button my-2 is-rounded is-link' %>
+  </div>
+<% end %>

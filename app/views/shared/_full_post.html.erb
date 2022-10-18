@@ -14,7 +14,6 @@
 
           <small>
               <%= render "shared/edit_post_button", post: post %> 
-              <%# Maybe I can target the above turbo-frame with the above link and remove all these links from the frame, we'll see %>
               <%= render "shared/delete_post_button", {current_user: current_user, post: post} %> 
               <%= post.pretty_time %>
           </small>
@@ -32,25 +31,8 @@
       </article>
     <% end %>
 
-
-
     <% post.comments.each do |comment| %>
-      <article class="media">
-        <figure class="media-left">
-          <%= render "shared/profile_pic", {user: comment.user, size: "is-48x48"} %>
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong><%= link_to comment.user.name, user_path(comment.user.id) %></strong>
-              <br>
-                <%= comment.body %>
-              <br>
-              <small><%= render "shared/delete_comment_button", {comment: comment} %></small>
-            </p>
-          </div>
-        </div>
-      </article>
+      <%= render 'shared/full_comment', comment: comment %>
     <% end %>
   </div>
 
@@ -61,28 +43,16 @@
   </article>
 </article>
 
-
 <div id="modal-<%= post.id %>" class="modal">
   <div class="modal-background"></div>
   <div class="modal-content">
     <div class="box">
-      <%= form_with model: @comment, class: "is-flex is-flex-direction-column is-align-items-center" do |f| %>
-      <%# fix above and move this logic to the controller %>
-        <%= f.hidden_field :post_id, value: post.id %>
-
-        <div class="container has-text-centered">
-          <%= f.label :body, "New Comment", class: 'label' %>
-          <%= f.text_area :body, cols: 50, placeholder: "What's going on?", class: 'textarea' %>
-          <%= f.submit 'Comment', class: 'button my-2 is-rounded is-link' %>
-        </div>
-      <% end %>
+      <%= render 'shared/new_comment', {comment: comment, post: post} %>
     </div>
   </div>
 
   <button class="modal-close is-large" aria-label="close"></button>
 </div>
-
-
 
 <%# Figure out where to put this javascript %>
 <script>

@@ -1,0 +1,16 @@
+<article class="media">
+  <figure class="media-left">
+    <%= render "shared/profile_pic", {user: comment.user, size: "is-48x48"} %>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%= link_to comment.user.name, user_path(comment.user.id) %></strong>
+        <br>
+          <%= comment.body %>
+        <br>
+        <small><%= render "shared/delete_comment_button", {comment: comment} %></small>
+      </p>
+    </div>
+  </div>
+</article>
