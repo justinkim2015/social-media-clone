@@ -6,6 +6,8 @@ class Post < ApplicationRecord
 
   has_many :comments
 
+  has_one_attached :photo
+
   def pretty_time
     created_at.time.to_s[10..15]
   end

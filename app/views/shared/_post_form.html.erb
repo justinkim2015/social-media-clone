@@ -3,6 +3,7 @@
 
   <%= form_with model: model, class: 'is-flex is-flex-direction-column is-align-items-center', method: "post" do |f| %>
     <%= f.text_area :body, cols: 50, rows: 3, placeholder: "What's going on?", class: 'textarea is-hovered has-background-white-bis'%>
+    <%= f.file_field :photo %>
     <%= f.submit "Submit Post", class: 'button mt-4 is-rounded is-link' %>
   <% end %>
 </div>
