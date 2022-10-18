@@ -8,11 +8,13 @@
       <div class="container is-flex is-justify-content-center my-2 level">
         <%= render "shared/profile_pic", {user: user, size: 'is-48x48'} %>
         <%= link_to user.name, user_path(user.id), class: "mx-2" %>
-        <% unless user.has_request_from_current_user?(current_user.id) %>
-          <%= render 'create_req', user: user %>
+        
+        <% if current_user.request_from?(user) %>
+          <%= render 'shared/accept_reject_req', user: user %>
         <% else %>
-          <%= render 'delete_req', user: user %>
+          <%= render 'shared/create_del_req', user: user %>
         <% end %>
+        
       </div>
   <% end %>
 </div>

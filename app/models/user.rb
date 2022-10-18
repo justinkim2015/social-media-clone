@@ -32,8 +32,12 @@ class User < ApplicationRecord
     User.all - [current_user] - current_user.friends
   end
 
-  def has_request_from_current_user?(req_user)
+  def request_from_current_user?(req_user)
     true unless FriendRequest.find_by(requester_id: req_user, reciever_id: id).nil?
+  end
+
+  def request_from?(user)
+    true unless FriendRequest.find_by(requester_id: user.id, reciever_id: id).nil?
   end
 
   def friends

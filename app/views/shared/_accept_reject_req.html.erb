@@ -1,0 +1,11 @@
+<%= button_to "Yes",
+              friendships_path,
+              method: :post,
+              params: { friendship: {friend_a_id: current_user.id, friend_b_id: user.id} },
+              class: 'button is-small is-rounded is-link' %>
+
+<%= button_to "No",
+              friend_request_path(0),
+              method: :delete,
+              params: {requester_id: user.id , reciever_id: current_user.id},
+              class: 'button is-small is-rounded is-danger' %>

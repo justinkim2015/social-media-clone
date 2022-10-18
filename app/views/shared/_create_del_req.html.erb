@@ -1,0 +1,5 @@
+<% unless user.request_from_current_user?(current_user.id) %>
+  <%= render 'create_req', user: user %>
+<% else %>
+  <%= render 'delete_req', user: user %>
+<% end %>
