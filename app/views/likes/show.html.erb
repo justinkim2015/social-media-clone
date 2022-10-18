@@ -3,6 +3,6 @@
   <article class="media">
     <%= render "shared/like_unlike", {post: @post, current_user: current_user} %>
 
-    <%= @likes %>
+    <p class='mx-1'><%= @likes %></p>
   </article>
 <% end %>

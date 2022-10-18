@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   def index
-    # @posts = Post.filter_posts(current_user)
     @posts = Post.all.order(id: :desc)
     @new_post = Post.new
     @notifs = current_user.recieved_friend_requests

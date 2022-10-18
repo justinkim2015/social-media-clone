@@ -1,6 +1,5 @@
 <div class="navbar is-link">
   <div class="navbar-brand" style="height: 10vh;">
-    <!-- <a class="navbar-item"><%= image_tag "logo.png", size: "300x300", class:'image' %></a> -->
     <div class="navbar-item">
       <%= link_to "RailsBook", root_path, class: "has-text-white is-size-2 has-text-weight-bold" %>
     </div>
@@ -49,20 +48,20 @@
           
           <% if defined?(notifs) %>
             <% notifs.each do |notif| %>
-              <a class="navbar-item">
-                <p><%= notif.requester.email %></p>
-
-                <%= button_to "Yes",
-                              friendships_path, 
-                              method: :post, 
-                              params: { friendship: {friend_a_id: current_user.id, friend_b_id: notif.requester.id} } %>
-                
-                <%= button_to "No",
-                              friend_request_path(0), 
-                              method: :delete, 
-                              params: {requester_id: notif.requester.id , reciever_id: current_user.id} %>
-
-              </a>
+                <div class="container is-flex level mx-2 p-1">
+                  <%= link_to notif.display_name, user_path(notif.id) %>
+                  <%= button_to "Yes",
+                                friendships_path,
+                                method: :post,
+                                params: { friendship: {friend_a_id: current_user.id, friend_b_id: notif.id} },
+                                class: 'button is-small is-rounded is-link' %>
+                  
+                  <%= button_to "No",
+                                friend_request_path(0),
+                                method: :delete,
+                                params: {requester_id: notif.id , reciever_id: current_user.id},
+                                class: 'button is-small is-rounded is-danger' %>
+                </div>
             <% end %>
           <% end %>
         </div>
