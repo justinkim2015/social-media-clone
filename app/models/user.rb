@@ -40,10 +40,6 @@ class User < ApplicationRecord
     friends_as_a + friends_as_b
   end
 
-  def friends_ids
-    friends_as_a_ids + friends_as_b_ids
-  end
-
   def name
     "#{first_name[0].upcase + first_name[1..].downcase} #{last_name[0].upcase + last_name[1..].downcase}"
   end

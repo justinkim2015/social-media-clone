@@ -1,4 +1,4 @@
-<%= render "shared/navbar"%>
+<%= render "shared/navbar", {notifs: current_user.recieved_friend_requests } %>
 <%= render "shared/flash" %>
 
 <div class="container">
@@ -11,7 +11,7 @@
         <p><%= @user.profile.bio %></p>
       <% end %>
 
-      <%= render "shared/add_edit_prof", {user: @user} %>
+      <%= render "shared/edit_prof", {user: @user} %>
     </div>
 
     <%= render "about_me", user: @user %>

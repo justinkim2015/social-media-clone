@@ -1,4 +1,4 @@
-<%= render "shared/navbar" %>
+<%= render "shared/navbar", {notifs: current_user.recieved_friend_requests} %>
 <%= render "shared/flash" %>
 
 <div class="container mt-6">
