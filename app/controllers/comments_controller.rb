@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
 
     if @comment.save
-      redirect_to root_path
+      redirect_back_or_to root_path
     else
       render :new, status: :unprocessable_entity
     end
