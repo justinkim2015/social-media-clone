@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     @posts = Post.all.order(id: :desc)
     @new_post = Post.new
     @notifs = current_user.recieved_friend_requests
+    @comment = current_user.comments.build
   end
 
   def new
