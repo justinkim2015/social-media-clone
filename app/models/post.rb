@@ -26,16 +26,6 @@ class Post < ApplicationRecord
     true unless likes.count.zero?
   end
 
-  def self.filter_posts(current_user)
-    posts = []
-
-    current_user.friends.each do |friend|
-      posts << friend.posts
-    end
-
-    posts + current_user.posts
-  end
-
   def author_name
     user.name
   end
