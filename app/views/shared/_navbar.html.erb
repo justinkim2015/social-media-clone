@@ -1,17 +1,17 @@
-<div class="navbar is-link">
+<div class="navbar is-link" data-controller="toggle">
   <div class="navbar-brand" style="height: 10vh;">
     <div class="navbar-item">
       <%= link_to "RailsBook", root_path, class: "has-text-white is-size-2 has-text-weight-bold" %>
     </div>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navmenu">
+    <a data-action="toggle#hide_unhide" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navmenu">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div class="navbar-menu" id='navmenu'>
+  <div class="navbar-menu" data-toggle-target="source">
     <div class="navbar-start">
       <div class="navbar-item"><%= link_to "Home", root_path, class: 'has-text-white' %></div>
       <div class="navbar-item"><%= link_to "Add Friends", users_path, class: 'has-text-white' %></div>
