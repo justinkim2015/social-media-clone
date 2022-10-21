@@ -1,4 +1,6 @@
 class FriendRequest < ApplicationRecord
+  validates :requester_id, :reciever_id, presence: true
+
   belongs_to :requester, class_name: :User
   belongs_to :reciever, class_name: :User
 

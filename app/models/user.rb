@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   after_create :send_mail, :create_profile
 
+  validates :email, :first_name, :last_name, presence: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
