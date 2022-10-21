@@ -31,4 +31,7 @@ class PostFlowsTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
   end
+
+  test 'can edit post' do
+  end
 end
