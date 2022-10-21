@@ -1,61 +1,62 @@
-<article class="media box">
-
-  <figure class="media-left">
-    <%= render "shared/profile_pic", {user: post.user, size: "is-48x48"} %>
-  </figure>
-
-  <div class="media-content">
-    <div class="content">
-      <p>
-        <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
-
-        <%= turbo_frame_tag post do %>
-        
-          <% if post.photo.attached? %>
-            <%= image_tag url_for(post.photo) %>
+<div data-controller="toggle">
+  <article class="media box">
+  
+    <figure class="media-left">
+      <%= render "shared/profile_pic", {user: post.user, size: "is-48x48"} %>
+    </figure>
+  
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
+  
+          <%= turbo_frame_tag post do %>
+  
+            <% if post.photo.attached? %>
+              <%= image_tag url_for(post.photo) %>
+            <% end %>
+  
+            <br><%= post.body %><br>
+  
+            <small>
+                <%= render "shared/edit_post_button", post: post %>
+                <%= render "shared/delete_post_button", {current_user: current_user, post: post} %>
+                <%= post.pretty_time %>
+            </small>
           <% end %>
-        
-          <br><%= post.body %><br>
-
-          <small>
-              <%= render "shared/edit_post_button", post: post %> 
-              <%= render "shared/delete_post_button", {current_user: current_user, post: post} %> 
-              <%= post.pretty_time %>
-          </small>
-        <% end %>
-      </p>
+        </p>
+      </div>
+  
+      <%= turbo_frame_tag "like_#{post.id}" do %>
+        <article class="media">
+          <%= render "shared/like_unlike", {post: post} %>
+  
+          <% if post.has_likes? %>
+              <p class='mx-1'><%= post.display_likes %></p>
+          <% end %>
+        </article>
+      <% end %>
+  
+      <% post.comments.each do |comment| %>
+        <%= render 'shared/full_comment', comment: comment %>
+      <% end %>
     </div>
-
-    <%= turbo_frame_tag "like_#{post.id}" do %>
-      <article class="media">
-        <%= render "shared/like_unlike", {post: post} %>
-
-        <% if post.has_likes? %>
-            <p class='mx-1'><%= post.display_likes %></p>
-        <% end %>
-      </article>
-    <% end %>
-
-    <% post.comments.each do |comment| %>
-      <%= render 'shared/full_comment', comment: comment %>
-    <% end %>
-  </div>
-
-  <article>
-    <button class="js-modal-trigger button is-link is-rounded is-small" data-target="modal-<%= post.id %>">
-      Comment
-    </button>
+  
+    <article>
+      <button class="js-modal-trigger button is-link is-rounded is-small" data-action="toggle#hide_unhide">
+        Comment
+      </button>
+    </article>
   </article>
-</article>
-
-<div id="modal-<%= post.id %>" class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <div class="box">
-      <%= render 'shared/new_comment', {comment: comment, post: post} %>
+  
+  <div class="modal" data-toggle-target="source">
+    <div class="modal-background" data-action="click->toggle#hide_unhide"></div>
+    <div class="modal-content">
+      <div class="box">
+        <%= render 'shared/new_comment', {comment: comment, post: post} %>
+      </div>
     </div>
+  
+    <button class="modal-close is-large" aria-label="close" data-action="toggle#hide_unhide"></button>
   </div>
-
-  <button class="modal-close is-large" aria-label="close"></button>
 </div>
-
