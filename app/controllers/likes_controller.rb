@@ -3,7 +3,6 @@ class LikesController < ApplicationController
     @like = Like.new(like_params)
 
     @like.save
-
     redirect_to like_path(like_params[:post_id])
   end
 

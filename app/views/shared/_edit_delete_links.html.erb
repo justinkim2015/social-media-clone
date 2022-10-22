@@ -1,5 +1,6 @@
 <% if current_user == comment.user %>
-  <%=  link_to "Delete", 
+  <%=  link_to "Edit", edit_comment_path(comment.id) %>
+  <%=  link_to "· Delete", 
               comment_path(comment.id),
               data: { turbo_method: :delete }
               %>

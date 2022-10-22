@@ -6,10 +6,14 @@
     <div class="content">
       <p>
         <strong><%= link_to comment.user.name, user_path(comment.user.id) %></strong>
-        <br>
-          <%= comment.body %>
-        <br>
-        <small><%= render "shared/delete_comment_button", {comment: comment} %></small>
+
+        <%= turbo_frame_tag comment do %>
+          <br>
+            <%= comment.body %>
+          <br>
+          <small><%= render "shared/edit_delete_links", {comment: comment} %></small>
+        <% end %>
+
       </p>
     </div>
   </div>

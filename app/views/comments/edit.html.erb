@@ -1,0 +1,14 @@
+<%= turbo_frame_tag @comment do %>
+
+  <%= form_with model: @comment do |f| %>
+    <%= f.hidden_field :post_id, value: @comment.post.id %>
+
+    <div class="container">
+      <%= f.text_area :body, placeholder: "What's going on?", class: 'textarea' %>
+      <%= f.submit 'Comment', class: 'button mt-2 is-rounded is-link is-small' %>
+    </div>
+  <% end %>
+
+<% end %>
+
+<%= link_to "home", root_path %>

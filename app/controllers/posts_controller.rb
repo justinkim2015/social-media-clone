@@ -43,9 +43,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update(post_params)
-      redirect_to root_path
+      redirect_back_or_to root_path
     else
-      render :edit, status: :unproceesable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
