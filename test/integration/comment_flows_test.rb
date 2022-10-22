@@ -9,6 +9,11 @@ class CommentFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "Can write comment" do
+    post "/comments",
+      params: { comment: {body: 'Hello', post_id: 1} }
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
   end
 
   test "Can delete comment" do
