@@ -1,12 +1,18 @@
 <div data-controller="delete">
   <% flash.each do |type, msg| %>
-    <div class="notification" data-delete-target="source">
-      <button class="delete mr-2 mt-3" data-action="delete#delete"></button>
-      <% if type == notice %>
+    <% if type == 'notice' %>
+      <div class="notification" data-delete-target="source">
+        <button class="delete mr-2 mt-3" data-action="delete#delete"></button>
         <strong><%= msg %></strong>
-      <% else %>
+      </div>
+    <% else %>
+      <div class="notification is-danger" data-delete-target="source">
+        <button class="delete mr-2 mt-3" data-action="delete#delete"></button>
         <strong><%= msg %></strong>
-      <% end %>
-    </div>
+      </div>  
+    <% end %>
   <% end %>
 </div>
+
+
+
