@@ -19,7 +19,8 @@ class PostsController < ApplicationController
       flash.notice = 'New post created!'
       redirect_back_or_to root_path
     else
-      render :new, status: :unprocessable_entity
+      flash.alert = "You can't submit an empty post!"
+      redirect_back_or_to root_path, status: :unprocessable_entity
     end
   end
 
