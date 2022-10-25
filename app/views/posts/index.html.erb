@@ -9,4 +9,8 @@
       <%= render "shared/full_post", {post: post, comment: @comment} %>
     <% end %>
   <% end %>
+
+  <% if @posts.empty? %>
+    <p class="container has-text-centered is-size-4 py-6"><%= link_to "Add some friends", users_path %> to see posts! :(</p>
+  <% end %>
 </div>
