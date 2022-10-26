@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create :send_mail, :create_profile
+  after_create :send_mail, :create_profile, :generate_friend_requests
 
   validates :email, :first_name, :last_name, presence: true
 
@@ -74,5 +74,13 @@ class User < ApplicationRecord
 
   def create_profile
     Profile.create(user_id: id)
+  end
+
+  def generate_friend_requests
+    return if User.second.nil? || User.third.nil?
+
+    FriendRequest.create!(requester_id: User.first.id, reciever_id: id)
+    FriendRequest.create!(requester_id: User.second.id, reciever_id: id)
+    FriendRequest.create!(requester_id: User.third.id, reciever_id: id)
   end
 end
