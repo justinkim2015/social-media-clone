@@ -8,7 +8,7 @@
 
       <h2 class="title is-size-5 mt-1"><%= @user.name %></h2>
       <% if defined?(@user.profile.bio) %>
-        <p><%= @user.profile.bio %></p>
+        <p class="container p-2"><%= @user.profile.bio %></p>
       <% end %>
 
       <%= render "shared/edit_prof", {user: @user} %>
@@ -30,9 +30,9 @@
     <h2 class="title is-size-5">Friends:</h2>
     <ul>
       <% @user.friends.each do |friend| %>
-        <div class="container is-flex">
+        <div class="container is-flex is-align-items-center">
           <li><%= render "shared/profile_pic", {user: friend, size: 'is-48x48'} %></li>
-          <li><%= link_to friend.name, user_path(friend.id) %></li>
+          <li class="mx-1"><%= link_to friend.name, user_path(friend.id) %></li>
         </div>
       <% end %>
     </ul>
