@@ -2,37 +2,43 @@
 <%= render "shared/flash" %>
 
 <div class="container level" style="height: 80vh;">
-  <div class="column is-three-fifths is-offset-one-fifth">
-    <h2 class='title'>Log in</h2>
+  <div class="columns" style="width: 100vw">
+
+    <div class="column">
+      <%= image_tag("logo.png", size: "500x200") %>
+    </div>
+
+    <div class="column">
+      <h2 class='title'>Log in</h2>
     
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
-      </div>
-    
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: 'input' %>
-      </div>
-    
-      <% if devise_mapping.rememberable? %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-          <div class="container is-flex">
-            <%= f.check_box :remember_me, class: 'select mx-1' %>
-            <%= f.label :remember_me, class: 'label' %>
-          </div>
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
         </div>
-      <% end %>
     
-      <div class="actions">
-        <%= f.submit "Log in", class: 'button is-rounded is-small', data: { turbo: false } %>
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: 'input' %>
+        </div>
+    
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <div class="container is-flex is-align-items-center">
+              <%= f.check_box :remember_me, class: 'select mx-1' %>
+              <%= f.label :remember_me, class: 'label' %>
+            </div>
+          </div>
+        <% end %>
+    
+        <div class="actions">
+          <%= f.submit "Log in", class: 'button is-rounded is-small', data: { turbo: false } %>
+        </div>
+          <%= button_to "Facebook login", user_facebook_omniauth_authorize_path, class: "button is-small is-rounded is-link my-1", data: {turbo: false} %>
+      <% end %>
+      <div class="container ml-2">
+        <small><%= render "devise/shared/links" %></small>
       </div>
-
-    <% end %>
-
-    <div class="container ml-1"><small><%= render "devise/shared/links" %></small></div>
-
-    <%= button_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "button is-small is-rounded is-link", data: {turbo: false} %>
+    </div>
   </div>
 </div>
