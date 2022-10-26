@@ -5,10 +5,10 @@
   <div class="columns" style="width: 100vw">
 
     <div class="column">
-      <%= image_tag("logo.png", size: "500x200") %>
+      <%= image_tag("logo.png", size: "600x200", class: "is-hidden-mobile") %>
     </div>
 
-    <div class="column">
+    <div class="column mx-5">
       <h2 class='title'>Log in</h2>
     
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -34,8 +34,9 @@
         <div class="actions">
           <%= f.submit "Log in", class: 'button is-rounded is-small', data: { turbo: false } %>
         </div>
-          <%= button_to "Facebook login", user_facebook_omniauth_authorize_path, class: "button is-small is-rounded is-link my-1", data: {turbo: false} %>
       <% end %>
+      <%= button_to "Facebook login", user_facebook_omniauth_authorize_path, class: "button is-small is-rounded is-link my-1", data: {turbo: false} %>
+
       <div class="container ml-2">
         <small><%= render "devise/shared/links" %></small>
       </div>

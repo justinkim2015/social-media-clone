@@ -29,4 +29,3 @@ Reflections:
 To-do
 - add sidebar maybe
 - Maybe add profile pictures to the people
-- restyle login page
