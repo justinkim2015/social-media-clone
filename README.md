@@ -29,3 +29,4 @@ Reflections:
 To-do
 - add sidebar maybe
 - Maybe add profile pictures to the people
+- Figure out how to send emails

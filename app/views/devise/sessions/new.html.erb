@@ -32,7 +32,7 @@
         <% end %>
     
         <div class="actions">
-          <%= f.submit "Log in", class: 'button is-rounded is-small', data: { turbo: false } %>
+          <%= f.submit "Log in", class: 'button is-rounded is-small is-primary', data: { turbo: false } %>
         </div>
       <% end %>
       <%= button_to "Facebook login", user_facebook_omniauth_authorize_path, class: "button is-small is-rounded is-link my-1", data: {turbo: false} %>
