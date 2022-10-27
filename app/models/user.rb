@@ -54,6 +54,10 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
+  def profile_pic?
+    profile_picture.attached?
+  end
+
   def profile_picture
     profile.profile_pic
   end

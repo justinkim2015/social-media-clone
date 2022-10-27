@@ -1,5 +1,13 @@
 <% unless user.request_from_current_user?(current_user.id) %>
-  <%= render 'create_req', user: user %>
+  <%= button_to 'Add',
+                friend_requests_path,
+                method: :post,
+                params: { friend_request: {requester_id: current_user.id, reciever_id: user.id} },
+                class: 'button is-small is-rounded is-primary' %>
 <% else %>
-  <%= render 'delete_req', user: user %>
+  <%= button_to 'Delete request',
+                friend_request_path('placeholder'),
+                method: :delete,
+                params: {requester_id: current_user.id, reciever_id: user.id},
+                class: 'button is-small is-rounded is-danger mx-1' %>
 <% end %>

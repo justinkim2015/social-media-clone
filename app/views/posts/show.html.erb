@@ -3,7 +3,7 @@
     <div class="card-content">
       <%= post.body %>
 
-      <% if post.user == current_user %>
+      <% if post.author?(current_user) %>
         <%= button_to "Edit Post", edit_post_path(post), method: :get %>
       <% end %>
     </div>

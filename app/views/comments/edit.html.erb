@@ -1,7 +1,7 @@
 <%= turbo_frame_tag @comment do %>
 
   <%= form_with model: @comment do |f| %>
-    <%= f.hidden_field :post_id, value: @comment.post.id %>
+    <%= f.hidden_field :post_id, value: @comment.post_id %>
 
     <div class="container">
       <%= f.text_area :body, placeholder: "What's going on?", class: 'textarea' %>

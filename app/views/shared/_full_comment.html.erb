@@ -5,7 +5,7 @@
   <div class="media-content">
     <div class="content">
       <p>
-        <strong><%= link_to comment.user.name, user_path(comment.user.id) %></strong>
+        <strong><%= link_to comment.author_name, user_path(comment.author_id) %></strong>
 
         <%= turbo_frame_tag comment do %>
           <br>

@@ -5,7 +5,7 @@
   <%= render "shared/post_form", {model: @new_post} %>
   
   <% @posts.each do |post| %>
-    <% if current_user.friends.include?(post.user) || post.user == current_user %>
+    <% if current_user.friends_with?(post.user) || post.author?(current_user) %>
       <%= render "shared/full_post", {post: post, comment: @comment} %>
     <% end %>
   <% end %>

@@ -7,4 +7,16 @@ class Comment < ApplicationRecord
   def author_name
     user.name
   end
+
+  def author_id
+    user.id
+  end
+
+  def post_id
+    post.id
+  end
+
+  def author?(author)
+    user == author
+  end
 end

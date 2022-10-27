@@ -8,11 +8,11 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
+          <strong><%= link_to post.author_name, user_path(post.author_id) %></strong>
   
           <%= turbo_frame_tag post do %>
   
-            <% if post.photo.attached? %>
+            <% if post.photo? %>
               <%= image_tag url_for(post.photo) %>
             <% end %>
   

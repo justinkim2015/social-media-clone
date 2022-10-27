@@ -1,4 +1,4 @@
-<% if current_user == comment.user %>
+<% if comment.author?(current_user) %>
   <%=  link_to "Edit", edit_comment_path(comment.id) %>
   <%=  link_to "· Delete", 
               comment_path(comment.id),

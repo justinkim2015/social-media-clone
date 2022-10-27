@@ -24,12 +24,24 @@ class Post < ApplicationRecord
     end
   end
 
+  def author?(author)
+    user == author
+  end
+
   def has_likes?
     true unless likes.count.zero?
   end
 
   def author_name
     user.name
+  end
+
+  def author_id
+    user.id
+  end
+
+  def photo?
+    photo.attached?
   end
 
   def liked_by?(user)
