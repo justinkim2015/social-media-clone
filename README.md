@@ -26,7 +26,4 @@ Reflections:
 
   My regret with this project is that I decided to use Bulma as a framework from the start instead of trying something new like Tailwind or even Bootstrap.  I could have used this as a learning opportunity to get familiar with another frontend framework but I decided to use the same one.  In my next app I think I'll try Tailwind to try a framework with a little more freedom to edit things and make the page exactly how I'd like it.  
 
-To-do
-- add sidebar maybe
-- Maybe add profile pictures to the people
-- Figure out how to send emails
+  
