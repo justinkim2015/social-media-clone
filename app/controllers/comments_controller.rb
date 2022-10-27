@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :own_comment, only: [:destroy]
+  before_action :set_comment, only: [:destroy, :edit, :update]
 
   def new
     @comment = Comment.new
@@ -17,20 +18,15 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-
     @comment.destroy
     flash.notice = "Comment deleted"
     redirect_back_or_to root_path
   end
 
   def edit
-    @comment = Comment.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
-
     if @comment.update(comment_params)
       redirect_back_or_to root_path
     else
@@ -39,6 +35,9 @@ class CommentsController < ApplicationController
   end
 
   private
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
   def comment_params
     params.require(:comment).permit(:body, :post_id)

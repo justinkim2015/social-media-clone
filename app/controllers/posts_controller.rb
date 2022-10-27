@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :own_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy, :show]
 
   def index
     @posts = Post.all.order(id: :desc)
@@ -25,24 +26,18 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def destroy
-    @post = Post.find(params[:id])
-
     @post.destroy
     flash.notice = "Post deleted!"
     redirect_back_or_to root_path
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
-
     if @post.update(post_params)
       redirect_back_or_to root_path
     else
@@ -51,6 +46,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:body, :photo)
