@@ -1,20 +1,27 @@
 <%= render "shared/navbar", {notifs: current_user.recieved_friend_requests } %>
 <%= render 'shared/flash' %>
 
-<div class="container has-text-centered mt-6">
-  <h1 class='title'>Add New Friend</h1>
+<div class='is-flex is-justify-content-center	is-align-content-center'>
+  <div class="box m-6 p-6">
+    <h1 class='title'>Add New Friend</h1>
   
-  <% @filtered_users.each do |user| %>
-      <div class="container is-flex is-justify-content-center my-2 level">
-        <%= render "shared/profile_pic", {user: user, size: 'is-48x48'} %>
-        <%= link_to user.name, user_path(user.id), class: "mx-2" %>
-        
-        <% if current_user.request_from?(user) %>
-          <%= render 'shared/accept_reject_req', user: user %>
-        <% else %>
-          <%= render 'shared/create_del_req', user: user %>
-        <% end %>
-        
-      </div>
-  <% end %>
+    <% @filtered_users.each do |user| %>
+        <div class="container my-2">
+          <div class="is-flex is-justify-content-space-between">
+            <div class="is-flex">
+              <%= render "shared/profile_pic", {user: user, size: 'is-64x64'} %>
+              <%= link_to user.name, user_path(user.id), class: "mx-2 is-flex is-align-items-center is-size-4" %>
+            </div>
+  
+            <div class="is-flex">
+              <% if current_user.request_from?(user) %>
+                <div class="is-flex is-align-items-center"><%= render 'shared/accept_reject_req', user: user %></div>
+              <% else %>
+                <div class="is-flex is-align-items-center"><%= render 'shared/create_del_req', user: user %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
 </div>

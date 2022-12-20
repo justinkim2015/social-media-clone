@@ -3,11 +3,11 @@
                 friend_requests_path,
                 method: :post,
                 params: { friend_request: {requester_id: current_user.id, reciever_id: user.id} },
-                class: 'button is-small is-rounded is-primary' %>
+                class: 'button is-rounded is-primary' %>
 <% else %>
-  <%= button_to 'Delete request',
+  <%= button_to 'Delete',
                 friend_request_path('placeholder'),
                 method: :delete,
                 params: {requester_id: current_user.id, reciever_id: user.id},
-                class: 'button is-small is-rounded is-danger mx-1' %>
+                class: 'button is-rounded is-danger mx-1' %>
 <% end %>
