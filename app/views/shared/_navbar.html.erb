@@ -1,10 +1,10 @@
 <div class="navbar is-link" data-controller="toggle">
-  <div class="navbar-brand" style="height: 10vh;">
+  <div class="navbar-brand flex" style="height: 10vh;">
     <div class="navbar-item">
       <%= link_to "RailsBook", root_path, class: "has-text-white is-size-2 has-text-weight-bold" %>
     </div>
 
-    <a data-action="toggle#hide_unhide" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navmenu">
+    <a data-action="toggle#hide_unhide" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navmenu" style='margin-top:1.5rem;'>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -25,6 +25,7 @@
           <ul>
             <li class='m-1'><%= link_to "View profile", user_path(current_user.id) %></li>
             <li class='m-1'><%= link_to "Settings", edit_user_registration_path %></li>
+            <li class='m-1'><%= link_to "Add Friends", users_path %></li>
             <li class="m-1"><%= render "shared/edit_prof", {user: current_user} %></li>
           </ul>
         </div>
