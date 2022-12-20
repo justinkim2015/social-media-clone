@@ -13,15 +13,15 @@
 
   <div class="navbar-menu" data-toggle-target="source">
     <div class="navbar-start">
-      <div class="navbar-item"><%= link_to "Home", root_path, class: 'has-text-white' %></div>
-      <div class="navbar-item"><%= link_to "Add Friends", users_path, class: 'has-text-white' %></div>
+      <div class="navbar-item is-hidden-touch" ><%= link_to "Home", root_path, class: 'has-text-white' %></div>
+      <div class="navbar-item is-hidden-touch"><%= link_to "Add Friends", users_path, class: 'has-text-white' %></div>
 
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link is-hidden-touch">
           <p>Profile</p>
         </a>
 
-        <div class="navbar-dropdown">
+        <div class="navbar-dropdown ml-2 mr-2 is-hidden-touch">
           <ul>
             <li class='m-1'><%= link_to "View profile", user_path(current_user.id) %></li>
             <li class='m-1'><%= link_to "Settings", edit_user_registration_path %></li>
@@ -30,20 +30,30 @@
           </ul>
         </div>
 
+        <div class="navbar-dropdown ml-2 mr-2 is-hidden-desktop	">
+          <ul class="is-flex is-flex-direction-row is-justify-content-space-around is-align-content-center">
+            <li class='m-1'><%= link_to "View profile", user_path(current_user.id) %></li>
+            <li class='m-1'><%= link_to "Settings", edit_user_registration_path %></li>
+            <li class='m-1'><%= link_to "Add Friends", users_path %></li>
+            <li class="m-1"><%= render "shared/edit_prof", {user: current_user} %></li>
+            <li><%= button_to "Signout", destroy_user_session_path, class: "button is-danger is-small", method: :delete, data: {turbo: false} %></li> 
+          </ul>
+        </div>
+
       </div>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link is-flex is-hidden-touch">
           <p>Friend Requests</p>
         </a>
 
-        <div class="navbar-dropdown">
+        <div class="navbar-dropdown is-hidden-touch">
           
           <% if defined?(notifs) && notifs.empty? %>
-            <a class="navbar-item">
-              <p>Nothing for now!</p>
+            <a class="navbar-item is-hidden-touch">
+              Nothing for now!
             </a>
           <% end %>
           
@@ -58,7 +68,7 @@
         </div>
       </div>
 
-      <div class="navbar-item"><%= button_to "Signout", destroy_user_session_path, class: "button is-danger", method: :delete, data: {turbo: false} %></div>
+      <div class="navbar-item is-hidden-touch"><%= button_to "Signout", destroy_user_session_path, class: "button is-danger", method: :delete, data: {turbo: false} %></div>
     </div>
   </div>
 </div>
