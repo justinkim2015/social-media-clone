@@ -2,6 +2,7 @@
 
 ## Summary
 ###### Live: https://rails-book.onrender.com/users/
+###### Note: Due to being hosted on the Render free plan, site may take a little while to start up at first
 
 This project was written by Justin Kim in October of 2022 as part of theOdinProject curriculum. (https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project).
 
